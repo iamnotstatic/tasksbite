@@ -7,8 +7,8 @@ const sendWelcomeEmail = async (email, name) => {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'staticdev20046@gmail.com', // generated ethereal user
-      pass: '09096548039abdul' // generated ethereal password
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD
     }
   });
 
@@ -27,8 +27,8 @@ const sendCancelationEmail = async (email, name) => {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: process.env.EMAIL_USERNAME, // generated ethereal user
-      pass: process.env.EMAIL_PASSWORD // generated ethereal password
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD
     }
   });
 
