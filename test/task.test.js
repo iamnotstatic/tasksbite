@@ -56,3 +56,11 @@ test('Should delete user task', async () => {
     .send()
     .expect(200);
 });
+
+test('Should fetch only incomplete tasks ', async () => {
+  await request(app)
+    .get('/tasks?completed=false')
+    .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+    .send()
+    .expect(200);
+});
