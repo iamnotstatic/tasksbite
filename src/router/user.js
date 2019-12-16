@@ -86,7 +86,7 @@ router.delete('/users/me', auth, async (req, res) => {
     });
     res.send(req.user);
   } catch (error) {
-    res.status(500).send({error:error.message});
+    res.status(500).send({ error: error.message });
   }
 });
 
