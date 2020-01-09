@@ -4,7 +4,7 @@ const Register = () => {
   return (
     <Fragment>
       <div className="valign-wrapper row login-box">
-        <div className="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+        <div className="col card s10 pull-s1 m6 pull-m3 l4 pull-l4">
           <form>
             <div className="card-content">
               <span className="card-title center">Register</span>
@@ -38,11 +38,12 @@ const Register = () => {
                 </div>
               </div>
               <div className="card-action right-align center text-white">
-                <input
+                <button
+                  className="btn blue waves-effect waves-light"
                   type="submit"
-                  className="btn btn-medium blue waves-effect waves-light"
-                  value="Register"
-                />
+                >
+                  Register <i class="material-icons right">send</i>
+                </button>
               </div>
             </div>
           </form>
