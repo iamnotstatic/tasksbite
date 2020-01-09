@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/mailer');
 const router = new express.Router();
 
-router.post('/users', async (req, res) => {
+router.post('/api/users', async (req, res) => {
   const user = new User(req.body);
   try {
     await user.save();
@@ -20,7 +20,7 @@ router.post('/users', async (req, res) => {
   }
 });
 
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
   try {
     const user = await User.findByCredentials(
       req.body.email,
@@ -33,7 +33,7 @@ router.post('/users/login', async (req, res) => {
   }
 });
 
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter(token => {
       return token.token !== req.token;
@@ -45,7 +45,7 @@ router.post('/users/logout', auth, async (req, res) => {
   }
 });
 
-router.post('/users/logoutAll', auth, async (req, res) => {
+router.post('/api/users/logoutAll', auth, async (req, res) => {
   try {
     req.user.tokens = [];
     await req.user.save();
@@ -55,11 +55,11 @@ router.post('/users/logoutAll', auth, async (req, res) => {
   }
 });
 
-router.get('/users/me', auth, async (req, res) => {
+router.get('/api/users/me', auth, async (req, res) => {
   res.send(req.user);
 });
 
-router.patch('/users/me', auth, async (req, res) => {
+router.patch('/api/users/me', auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['name', 'email', 'age', 'password'];
   const isValidationOperation = updates.every(update =>
@@ -78,7 +78,7 @@ router.patch('/users/me', auth, async (req, res) => {
   }
 });
 
-router.delete('/users/me', auth, async (req, res) => {
+router.delete('/api/users/me', auth, async (req, res) => {
   try {
     await req.user.remove();
     sendCancelationEmail(req.user.email, req.user.name).catch(error => {
@@ -104,7 +104,7 @@ const upload = multer({
 });
 
 router.post(
-  '/users/me/avatar',
+  '/api/users/me/avatar',
   auth,
   upload.single('avatar'),
   async (req, res) => {
@@ -121,13 +121,13 @@ router.post(
   }
 );
 
-router.delete('/users/me/avatar', auth, async (req, res) => {
+router.delete('/api/users/me/avatar', auth, async (req, res) => {
   req.user.avatar = undefined;
   await req.user.save();
   res.send();
 });
 
-router.get('/users/:id/avatar', async (req, res) => {
+router.get('/api/users/:id/avatar', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
 

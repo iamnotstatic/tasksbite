@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "env-cmd ./config/test.env jest --watch --runInBand"
+    "server": "env-cmd ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd ./config/test.env jest --watch --runInBand",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "jest": {
     "testEnvironment": "node"
@@ -27,6 +30,7 @@
     "validator": "^10.9.0"
   },
   "devDependencies": {
+    "concurrently": "^5.0.2",
     "env-cmd": "^8.0.2",
     "jest": "^23.6.0",
     "nodemon": "^1.18.9",
