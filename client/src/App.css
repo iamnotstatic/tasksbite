@@ -1,7 +1,15 @@
-nav {
+/* nav {
   margin-bottom: 30px !important;
+} */
+
+.valign-wrapper {
+  margin-top: 30px !important;
 }
 
 .brand-logo {
   font-size: 20px !important;
+}
+
+.section-footer {
+  padding: 20px;
 }

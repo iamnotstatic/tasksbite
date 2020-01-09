@@ -7,9 +7,9 @@ const Navbar = () => {
       <nav className="blue z-depth-0">
         <div className="nav-wrapper">
           <div className="container">
-            <a href="#!" className="brand-logo">
+            <Link to="/" className="brand-logo">
               Task Manager
-            </a>
+            </Link>
             <a href="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
             </a>
