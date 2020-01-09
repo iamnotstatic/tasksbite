@@ -1,11 +1,34 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+
+import M from 'materialize-css/dist/js/materialize.min';
 
 const Register = () => {
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: ''
+  });
+
+  const { name, email, password, password2 } = user;
+  const onChange = e => setUser({ ...user, [e.target.name]: [e.target.value] });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (name === '' || email === '' || password === '' || password2 === '') {
+      M.toast({ html: 'Please enter all fields' });
+    } else if (password !== password2) {
+      M.toast({ html: 'Passwords do not match' });
+    } else {
+      console.log(name, email, password, password2);
+    }
+  };
+
   return (
     <Fragment>
       <div className="valign-wrapper row login-box">
         <div className="col card s10 pull-s1 m6 pull-m3 l4 pull-l4">
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="card-content">
               <span className="card-title center">Register</span>
               <div className="row">
@@ -15,7 +38,8 @@ const Register = () => {
                     type="text"
                     className="validate"
                     name="name"
-                    id="name"
+                    value={name}
+                    onChange={onChange}
                   />
                 </div>
                 <div className="input-field col s12">
@@ -24,7 +48,8 @@ const Register = () => {
                     type="email"
                     className="validate"
                     name="email"
-                    id="email"
+                    value={email}
+                    onChange={onChange}
                   />
                 </div>
                 <div className="input-field col s12">
@@ -33,7 +58,20 @@ const Register = () => {
                     type="password"
                     className="validate"
                     name="password"
-                    id="password"
+                    value={password}
+                    minLength="7"
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="input-field col s12">
+                  <label htmlFor="password2">Password </label>
+                  <input
+                    type="password"
+                    className="validate"
+                    name="password2"
+                    value={password2}
+                    minLength="7"
+                    onChange={onChange}
                   />
                 </div>
               </div>
@@ -42,7 +80,7 @@ const Register = () => {
                   className="btn blue waves-effect waves-light"
                   type="submit"
                 >
-                  Register <i class="material-icons right">send</i>
+                  Register <i className="material-icons right">send</i>
                 </button>
               </div>
             </div>
