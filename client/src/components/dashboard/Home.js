@@ -3,8 +3,8 @@ import Todo from './todo/Todo';
 
 const Home = () => {
   return (
-    <section class="section section-posts grey lighten-4">
-      <div class="row">
+    <section className="section section-posts grey lighten-4">
+      <div className="row">
         <div className="col m3 s12">
           <div className="card blue-grey white-text">
             <div className="center" style={{ transform: 'translateX(0px)' }}>
@@ -16,19 +16,19 @@ const Home = () => {
               <ul>
                 <li>
                   <a href="index.html" className="black-text">
-                    <i class="material-icons left">dashboard</i> Dashboard
+                    <i className="material-icons left">dashboard</i> Dashboard
+                  </a>
+                </li>
+                <br />
+                <li>
+                  <a href="/profile" className="black-text">
+                    <i className="material-icons left">person</i> Profile
                   </a>
                 </li>
                 <br />
                 <li>
                   <a href="index.html" className="black-text">
-                    <i class="material-icons left">person</i> Profile
-                  </a>
-                </li>
-                <br />
-                <li>
-                  <a href="index.html" className="black-text">
-                    <i class="material-icons left">help</i> Help & Feedback
+                    <i className="material-icons left">help</i> Help & Feedback
                   </a>
                 </li>
               </ul>
@@ -36,6 +36,29 @@ const Home = () => {
           </div>
         </div>
         <div className="col s12 m8">
+          <div className="row">
+            <div className="col s12 m6 l4">
+              <div className="card-panel blue lighten-1 white-text center">
+                <i className="material-icons medium">insert_emoticon</i>
+                <h5>Total Todos</h5>
+                <h3 className="count">28300</h3>
+              </div>
+            </div>
+            <div className="col s12 m6 l4">
+              <div className="card-panel green lighten-1 white-text center">
+                <i className="material-icons medium">check</i>
+                <h5>Completed</h5>
+                <h3 className="count">28300</h3>
+              </div>
+            </div>
+            <div className="col s12 m6 l4">
+              <div className="card-panel red lighten-1 white-text center">
+                <i className="material-icons medium">clear</i>
+                <h5>Pending</h5>
+                <h3 className="count">28300</h3>
+              </div>
+            </div>
+          </div>
           <div className="card">
             <div className="card-content">
               <span className="card-title center">TodoList</span>
@@ -48,7 +71,7 @@ const Home = () => {
                     <i className="material-icons">chevron_left</i>
                   </a>
                 </li>
-                <li class="active blue lighten-2">
+                <li className="active blue lighten-2">
                   <a href="#!" className="white-text">
                     1
                   </a>
@@ -63,12 +86,12 @@ const Home = () => {
                     3
                   </a>
                 </li>
-                <li class="waves-effect">
+                <li className="waves-effect">
                   <a href="#!" className="blue-text">
                     4
                   </a>
                 </li>
-                <li class="waves-effect">
+                <li className="waves-effect">
                   <a href="#!" className="blue-text">
                     5
                   </a>
