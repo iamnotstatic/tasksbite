@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import AuthContext from '../../context/auth/authContext';
 import Todo from './todo/Todo';
 
 const Home = () => {
+  const authContext = useContext(AuthContext);
+  const {} = authContext;
   return (
     <section className="section section-posts grey lighten-4">
       <div className="row">
