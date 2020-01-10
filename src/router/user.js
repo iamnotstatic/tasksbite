@@ -9,6 +9,10 @@ const router = new express.Router();
 router.post('/api/users', async (req, res) => {
   const user = new User(req.body);
   try {
+    let exists = await User.findOne({ email: user.email });
+    if (exists) {
+      return res.status(400).json({ msg: 'User already exits' });
+    }
     await user.save();
     sendWelcomeEmail(user.email, user.name).catch(error => {
       res.status(500).send(error.message);
@@ -16,6 +20,7 @@ router.post('/api/users', async (req, res) => {
     const token = await user.generateAuthToken();
     res.status(201).send({ user, token });
   } catch (error) {
+    console.log(error);
     res.status(400).send({ error: error.message });
   }
 });
@@ -26,10 +31,11 @@ router.post('/api/users/login', async (req, res) => {
       req.body.email,
       req.body.password
     );
+
     const token = await user.generateAuthToken();
     res.send({ user, token });
-  } catch (error) {
-    res.status(400).send();
+  } catch (err) {
+    res.status(400).send('Invalid Credentials');
   }
 });
 
