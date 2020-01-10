@@ -11,18 +11,18 @@ const Register = () => {
   });
 
   const { name, email, password, password2 } = user;
-  const onChange = e => setUser({ ...user, [e.target.name]: [e.target.value] });
+  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '' || password === '' || password2 === '') {
       let Msg = '<span class="red-text">All fields are required</span>';
       M.toast({ html: Msg });
-    } else if (password[0] !== password2[0]) {
+    } else if (password !== password2) {
       let pwdMatch = '<span class="red-text">Passwords do not match</span>';
       M.toast({ html: pwdMatch });
     } else {
-      console.log('Passed');
+      console.log(name, email, password, password2);
     }
   };
 
