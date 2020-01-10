@@ -16,11 +16,13 @@ const Register = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '' || password === '' || password2 === '') {
-      M.toast({ html: 'Please enter all fields' });
-    } else if (password !== password2) {
-      M.toast({ html: 'Passwords do not match' });
+      let Msg = '<span class="red-text">All fields are required</span>';
+      M.toast({ html: Msg });
+    } else if (password[0] !== password2[0]) {
+      let pwdMatch = '<span class="red-text">Passwords do not match</span>';
+      M.toast({ html: pwdMatch });
     } else {
-      console.log(name, email, password, password2);
+      console.log('Passed');
     }
   };
 
@@ -40,6 +42,7 @@ const Register = () => {
                     name="name"
                     value={name}
                     onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="input-field col s12">
@@ -50,6 +53,7 @@ const Register = () => {
                     name="email"
                     value={email}
                     onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="input-field col s12">
@@ -61,10 +65,11 @@ const Register = () => {
                     value={password}
                     minLength="7"
                     onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="input-field col s12">
-                  <label htmlFor="password2">Password </label>
+                  <label htmlFor="password2">Comfirm Password </label>
                   <input
                     type="password"
                     className="validate"
@@ -72,6 +77,7 @@ const Register = () => {
                     value={password2}
                     minLength="7"
                     onChange={onChange}
+                    required
                   />
                 </div>
               </div>
