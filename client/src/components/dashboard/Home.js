@@ -19,13 +19,13 @@ const Home = () => {
                     <i class="material-icons left">dashboard</i> Dashboard
                   </a>
                 </li>
-                <hr />
+                <br />
                 <li>
                   <a href="index.html" className="black-text">
                     <i class="material-icons left">person</i> Profile
                   </a>
                 </li>
-                <hr />
+                <br />
                 <li>
                   <a href="index.html" className="black-text">
                     <i class="material-icons left">help</i> Help & Feedback
@@ -38,7 +38,7 @@ const Home = () => {
         <div className="col s12 m8">
           <div className="card">
             <div className="card-content">
-              <span className="card-title">Categories</span>
+              <span className="card-title center">TodoList</span>
               <Todo />
             </div>
             <div className="card-action">
