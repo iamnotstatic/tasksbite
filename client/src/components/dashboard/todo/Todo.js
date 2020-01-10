@@ -6,13 +6,18 @@ const Todo = () => {
       <thead>
         <tr>
           <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
           <th>Date Created</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Web Development</td>
+          <td>Finish my Todo App</td>
+          <td>
+            <i className="material-icons green-text">check</i>
+          </td>
           <td>Jan 1, 2018</td>
           <td>
             <a href="#!" className="secondary-content">
@@ -26,8 +31,12 @@ const Todo = () => {
           </td>
         </tr>
         <tr>
-          <td>Graphic Design</td>
-          <td>Jan 2, 2018</td>
+          <td>Web Development</td>
+          <td>Finish my Todo App</td>
+          <td>
+            <i className="material-icons grey-text">close</i>
+          </td>
+          <td>Jan 1, 2018</td>
           <td>
             <a href="#!" className="secondary-content">
               <i className="material-icons grey-text">create</i>
@@ -40,8 +49,12 @@ const Todo = () => {
           </td>
         </tr>
         <tr>
-          <td>Tech Gadgets</td>
-          <td>Jan 3, 2018</td>
+          <td>Web Development</td>
+          <td>Finish my Todo App</td>
+          <td>
+            <i className="material-icons">check</i>
+          </td>
+          <td>Jan 1, 2018</td>
           <td>
             <a href="#!" className="secondary-content">
               <i className="material-icons grey-text">create</i>
@@ -54,8 +67,12 @@ const Todo = () => {
           </td>
         </tr>
         <tr>
-          <td>Other</td>
-          <td>Jan 5, 2018</td>
+          <td>Web Development</td>
+          <td>Finish my Todo App</td>
+          <td>
+            <i className="material-icons">close</i>
+          </td>
+          <td>Jan 1, 2018</td>
           <td>
             <a href="#!" className="secondary-content">
               <i className="material-icons grey-text">create</i>
