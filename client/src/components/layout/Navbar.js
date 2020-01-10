@@ -1,22 +1,23 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
-const Navbar = ({ title }) => {
+const Navbar = ({ title }, props) => {
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, logout, user } = authContext;
+  const { isAuthenticated, logout, user, loadUser } = authContext;
 
   const onLogout = () => {
     logout();
+    return <Route Redirect="/login" />;
   };
 
   const authLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
       <li>
-        <a href="#!" onClick={onLogout}>
+        <a href="/login" onClick={onLogout}>
           <i className="fa fa-sign-out"></i>
           <span className="hide-sm">Logout</span>
         </a>

@@ -4,7 +4,12 @@ import Todo from './todo/Todo';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
-  const {} = authContext;
+  const { loadUser } = authContext;
+
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
   return (
     <section className="section section-posts grey lighten-4">
       <div className="row">

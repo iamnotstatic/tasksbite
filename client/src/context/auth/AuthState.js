@@ -26,6 +26,13 @@ const AuthState = props => {
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  // Load User
+  const loadUser = () => {
+    dispatch({
+      type: USER_LOADED
+    });
+  };
+
   // Register
   const register = async formData => {
     const config = {
@@ -40,7 +47,6 @@ const AuthState = props => {
         type: REGISTER_SUCCESS,
         payload: res.data
       });
-
       if (localStorage.token) {
         setAuthToken(localStorage.token);
       }
@@ -99,6 +105,7 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         error: state.error,
+        loadUser,
         register,
         login,
         logout,
