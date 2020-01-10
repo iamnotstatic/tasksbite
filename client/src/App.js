@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import AddBtn from './components/layout/AddBtn';
+import AddTodoModal from './components/dashboard/todo/AddTodoModal';
+import EditTodoModal from './components/dashboard/todo/EditTodoModal';
 import Navbar from './components/layout/Navbar';
 import Register from './components/layout/auth/Register';
 import Login from './components/layout/auth/Login';
@@ -21,6 +23,8 @@ const App = () => {
     <Router>
       <div className="app">
         <Navbar />
+        <AddTodoModal />
+        <EditTodoModal />
         <AddBtn />
         <Switch>
           <Route exact path="/" component={LandingPage} />

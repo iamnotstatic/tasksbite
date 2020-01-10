@@ -20,7 +20,10 @@ const Todo = () => {
           </td>
           <td>Jan 1, 2018</td>
           <td>
-            <a href="#!" className="secondary-content">
+            <a
+              href="#edit-todo-modal"
+              className="secondary-content modal-trigger"
+            >
               <i className="material-icons grey-text">create</i>
             </a>
           </td>
