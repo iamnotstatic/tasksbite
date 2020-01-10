@@ -33,7 +33,7 @@ const Login = () => {
                   className="btn blue waves-effect waves-light"
                   type="submit"
                 >
-                  Login <i class="material-icons right">send</i>
+                  Login <i className="material-icons right">send</i>
                 </button>
               </div>
             </div>

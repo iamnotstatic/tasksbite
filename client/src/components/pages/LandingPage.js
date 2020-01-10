@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 const LandingPage = () => {
   return (
     <Fragment>
-      <section className="section center section-landing  light-blue accent-2 white-text">
+      <section className="section center section-landing">
         <div className="container">
           <h1 className="header center ">Starter Template</h1>
           <h5 className="header col s12 light">
@@ -25,7 +25,7 @@ const LandingPage = () => {
           <div className="row">
             <div className="col s12 m4">
               <div className="card-panel">
-                <i className="material-icons large">room</i>
+                <i className="material-icons large purple-text">room</i>
                 <h4>Pick Where</h4>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -36,7 +36,7 @@ const LandingPage = () => {
 
             <div className="col s12 m4">
               <div className="card-panel">
-                <i className="material-icons large">room</i>
+                <i className="material-icons large blue-text">room</i>
                 <h4>Pick Where</h4>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -47,7 +47,7 @@ const LandingPage = () => {
 
             <div className="col s12 m4">
               <div className="card-panel">
-                <i className="material-icons large">room</i>
+                <i className="material-icons large green-text">room</i>
                 <h4>Pick Where</h4>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
