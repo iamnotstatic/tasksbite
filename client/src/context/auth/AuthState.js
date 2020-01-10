@@ -52,6 +52,45 @@ const AuthState = props => {
     }
   };
 
+  // Login
+
+  const login = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/api/users/login', formData, config);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      });
+      if (localStorage.token) {
+        setAuthToken(localStorage.token);
+      }
+    } catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
+  // Logout
+  const logout = async () => {
+    try {
+      await axios.post('/api/users/logout');
+      dispatch({ type: LOGOUT });
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
+
+  // Clear Errors
+  const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
+
   return (
     <AuthContext.Provider
       value={{
@@ -60,7 +99,10 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         error: state.error,
-        register
+        register,
+        login,
+        logout,
+        clearErrors
       }}
     >
       {props.children}

@@ -1,11 +1,46 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
+import AuthContext from '../../../context/auth/authContext';
 
-const Login = () => {
+import M from 'materialize-css/dist/js/materialize.min';
+
+const Login = props => {
+  const authContext = useContext(AuthContext);
+
+  const { login, error, clearErrors, isAuthenticated } = authContext;
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/dasboard');
+    }
+    if (error === 'Invalid Credentials') {
+      M.toast({ html: error });
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
+
+  const { email, password } = user;
+
+  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+  const onSubmit = e => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      M.toast({ html: 'Please fill in all fields' });
+    } else {
+      login({
+        email,
+        password
+      });
+    }
+  };
+
   return (
     <Fragment>
       <div className="valign-wrapper row login-box">
         <div className="col card s10 pull-s1 m6 pull-m3 l4 pull-l4">
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="card-content">
               <span className="card-title center">Login</span>
               <div className="row">
@@ -15,7 +50,9 @@ const Login = () => {
                     type="email"
                     className="validate"
                     name="email"
-                    id="email"
+                    value={email}
+                    onChange={onChange}
+                    required
                   />
                 </div>
                 <div className="input-field col s12">
@@ -24,7 +61,9 @@ const Login = () => {
                     type="password"
                     className="validate"
                     name="password"
-                    id="password"
+                    value={password}
+                    onChange={onChange}
+                    required
                   />
                 </div>
               </div>

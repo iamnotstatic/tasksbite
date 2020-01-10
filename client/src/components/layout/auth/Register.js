@@ -1,8 +1,31 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
+import AuthContext from '../../../context/auth/authContext';
+import Spinner from '../Spinner';
 
 import M from 'materialize-css/dist/js/materialize.min';
 
-const Register = () => {
+const Register = props => {
+  const authContext = useContext(AuthContext);
+
+  const {
+    register,
+    error,
+    clearErrors,
+    isAuthenticated,
+    loading
+  } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/dasboard');
+    }
+
+    if (error === 'User already exits') {
+      M.toast({ html: 'User already exits' });
+      clearErrors();
+    }
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -22,9 +45,17 @@ const Register = () => {
       let pwdMatch = '<span class="red-text">Passwords do not match</span>';
       M.toast({ html: pwdMatch });
     } else {
-      console.log(name, email, password, password2);
+      register({
+        name,
+        email,
+        password
+      });
     }
   };
+
+  // if (loading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <Fragment>
