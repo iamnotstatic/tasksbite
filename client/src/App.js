@@ -12,6 +12,7 @@ import Dashboard from './components/dashboard/Home';
 import Profile from './components/dashboard/Profile';
 
 import M from 'materialize-css/dist/js/materialize.min';
+import AuthState from './context/auth/AuthState';
 import './App.css';
 
 const App = () => {
@@ -20,21 +21,23 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <AddTodoModal />
-        <EditTodoModal />
-        <AddBtn />
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/profile" component={Profile} />
-        </Switch>
-      </div>
-    </Router>
+    <AuthState>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <AddTodoModal />
+          <EditTodoModal />
+          <AddBtn />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+        </div>
+      </Router>
+    </AuthState>
   );
 };
 
