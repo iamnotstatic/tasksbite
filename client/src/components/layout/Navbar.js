@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { Link, Redirect, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
 const Navbar = ({ title }, props) => {
@@ -10,14 +10,13 @@ const Navbar = ({ title }, props) => {
 
   const onLogout = () => {
     logout();
-    return <Route Redirect="/login" />;
   };
 
   const authLinks = (
     <Fragment>
       <li>Hello {user && user.name}</li>
       <li>
-        <a href="/login" onClick={onLogout}>
+        <a href="#!" onClick={onLogout}>
           <i className="fa fa-sign-out"></i>
           <span className="hide-sm">Logout</span>
         </a>

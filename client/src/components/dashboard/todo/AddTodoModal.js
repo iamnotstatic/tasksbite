@@ -1,5 +1,4 @@
 import React from 'react';
-import M from 'materialize-css/dist/js/materialize.min';
 
 const AddTodoModal = () => {
   return (

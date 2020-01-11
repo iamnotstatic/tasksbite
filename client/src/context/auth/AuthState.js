@@ -19,7 +19,7 @@ const AuthState = props => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
-    loading: false,
+    loading: true,
     user: null,
     error: null
   };
@@ -33,17 +33,16 @@ const AuthState = props => {
     }
     try {
       const res = await axios.get('/api/users/me');
-      console.log(res);
+
       dispatch({
         type: USER_LOADED,
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
-      // dispatch({
-      //   type: AUTH_ERROR,
-      //   payload: err.response.request.responseText
-      // });
+      dispatch({
+        type: AUTH_ERROR,
+        payload: err.response.request.responseText
+      });
     }
   };
 
@@ -61,7 +60,7 @@ const AuthState = props => {
         type: REGISTER_SUCCESS,
         payload: res.data
       });
-      loadUser(res.data.user);
+      loadUser();
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,

@@ -1,6 +1,16 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 
-const LandingPage = () => {
+const LandingPage = props => {
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, loadUser } = authContext;
+
+  useEffect(() => {
+    loadUser();
+
+    // eslint-disable-next-line
+  }, []);
   return (
     <Fragment>
       <section className="section center section-landing">
