@@ -11,6 +11,7 @@ import LandingPage from './components/pages/LandingPage';
 import Dashboard from './components/dashboard/Home';
 import Profile from './components/dashboard/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
+import NotFound from './components/pages/NotFound';
 
 import M from 'materialize-css/dist/js/materialize.min';
 import AuthState from './context/auth/AuthState';
@@ -36,6 +37,7 @@ const App = () => {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>
