@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
-  const { loadUser, loading } = authContext;
+  const { loadUser, loading, user } = authContext;
 
   useEffect(() => {
     loadUser();
@@ -25,24 +25,24 @@ const Home = () => {
             <div className="card blue-grey white-text">
               <div className="center" style={{ transform: 'translateX(0px)' }}>
                 <img src="https://imgur.com/I80W1Q0.png" alt="" width="150px" />
-                <h5>Chris</h5>
-                <p>chris@gmail.com</p>
+                <h5>{user.name}</h5>
+                <p>{user.email}</p>
               </div>
               <div className="card-content white">
                 <ul>
-                  <li>
+                  <li className="hoverable" style={{ padding: '10px' }}>
                     <Link to="/dashboard" className="black-text">
                       <i className="material-icons left">dashboard</i> Dashboard
                     </Link>
                   </li>
                   <br />
-                  <li>
+                  <li className="hoverable" style={{ padding: '10px' }}>
                     <Link to="/profile" className="black-text">
                       <i className="material-icons left">person</i> Profile
                     </Link>
                   </li>
                   <br />
-                  <li>
+                  <li className="hoverable" style={{ padding: '10px' }}>
                     <Link to="/" className="black-text">
                       <i className="material-icons left">help</i> Help &
                       Feedback
