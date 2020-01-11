@@ -11,7 +11,7 @@ router.post('/api/users', async (req, res) => {
   try {
     let exists = await User.findOne({ email: user.email });
     if (exists) {
-      return res.status(400).json({ msg: 'User already exits' });
+      return res.status(400).send('User already exits');
     }
     await user.save();
     sendWelcomeEmail(user.email, user.name).catch(error => {
