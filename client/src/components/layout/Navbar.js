@@ -16,10 +16,10 @@ const Navbar = ({ title }, props) => {
     <Fragment>
       <li className="center">{user && user.name}</li>
       <li>
-        <a href="#!" onClick={onLogout}>
+        <Link to="#!" onClick={onLogout}>
           <i className="fa fa-sign-out"></i>
           <span className="hide-sm">Logout</span>
-        </a>
+        </Link>
       </li>
     </Fragment>
   );
@@ -42,9 +42,9 @@ const Navbar = ({ title }, props) => {
             <Link to="/" className="brand-logo">
               {title}
             </Link>
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+            <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
-            </a>
+            </Link>
             <ul className="right hide-on-med-and-down">
               {isAuthenticated ? authLinks : guestLinks}
             </ul>

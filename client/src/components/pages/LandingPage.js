@@ -71,7 +71,7 @@ const LandingPage = props => {
         </div>
       </section>
 
-      <div className="section-footer   light-blue accent-2 center white-text">
+      <div className="section-footer blue accent-2 center white-text">
         <p>&copy; 2020</p>
       </div>
     </Fragment>

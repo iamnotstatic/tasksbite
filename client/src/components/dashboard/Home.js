@@ -2,6 +2,7 @@ import React, { useEffect, useContext, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import Todo from './todo/Todo';
 import Spinner from '../layout/Spinner';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
@@ -30,22 +31,22 @@ const Home = () => {
               <div className="card-content white">
                 <ul>
                   <li>
-                    <a href="index.html" className="black-text">
+                    <Link to="/dashboard" className="black-text">
                       <i className="material-icons left">dashboard</i> Dashboard
-                    </a>
+                    </Link>
                   </li>
                   <br />
                   <li>
-                    <a href="/profile" className="black-text">
+                    <Link to="/profile" className="black-text">
                       <i className="material-icons left">person</i> Profile
-                    </a>
+                    </Link>
                   </li>
                   <br />
                   <li>
-                    <a href="index.html" className="black-text">
+                    <Link to="/" className="black-text">
                       <i className="material-icons left">help</i> Help &
                       Feedback
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
