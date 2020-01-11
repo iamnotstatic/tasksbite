@@ -27,9 +27,13 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   // Load User
-  const loadUser = () => {
+  const loadUser = data => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
     dispatch({
-      type: USER_LOADED
+      type: USER_LOADED,
+      payload: data
     });
   };
 
@@ -47,19 +51,16 @@ const AuthState = props => {
         type: REGISTER_SUCCESS,
         payload: res.data
       });
-      if (localStorage.token) {
-        setAuthToken(localStorage.token);
-      }
+      loadUser(res.data.user);
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
-        payload: err.message
+        payload: err.response.request.responseText
       });
     }
   };
 
   // Login
-
   const login = async formData => {
     const config = {
       headers: {
@@ -73,9 +74,7 @@ const AuthState = props => {
         type: LOGIN_SUCCESS,
         payload: res.data
       });
-      if (localStorage.token) {
-        setAuthToken(localStorage.token);
-      }
+      loadUser(res.data.user);
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
