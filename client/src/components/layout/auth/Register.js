@@ -17,7 +17,7 @@ const Register = props => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/dasboard');
+      props.history.push('/dashboard');
     }
 
     if (error === 'User already exits') {

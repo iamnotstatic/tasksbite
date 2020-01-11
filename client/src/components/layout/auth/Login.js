@@ -9,7 +9,7 @@ const Login = props => {
   const { login, error, clearErrors, isAuthenticated } = authContext;
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/dasboard');
+      props.history.push('/dashboard');
     }
     if (error === 'Invalid Credentials') {
       M.toast({ html: error });
