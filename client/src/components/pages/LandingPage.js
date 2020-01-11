@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
 const LandingPage = props => {
@@ -8,6 +7,9 @@ const LandingPage = props => {
 
   useEffect(() => {
     loadUser();
+    if (isAuthenticated) {
+      props.history.push('/dashboard');
+    }
 
     // eslint-disable-next-line
   }, []);

@@ -12,10 +12,12 @@ const Register = props => {
     error,
     clearErrors,
     isAuthenticated,
-    loading
+    loading,
+    loadUser
   } = authContext;
 
   useEffect(() => {
+    loadUser();
     if (isAuthenticated) {
       props.history.push('/dashboard');
     }
@@ -53,9 +55,9 @@ const Register = props => {
     }
   };
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <Fragment>

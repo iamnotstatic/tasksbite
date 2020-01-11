@@ -1,13 +1,22 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import AuthContext from '../../../context/auth/authContext';
+import Spinner from '../Spinner';
 
 import M from 'materialize-css/dist/js/materialize.min';
 
 const Login = props => {
   const authContext = useContext(AuthContext);
 
-  const { login, error, clearErrors, isAuthenticated } = authContext;
+  const {
+    login,
+    error,
+    clearErrors,
+    isAuthenticated,
+    loadUser,
+    loading
+  } = authContext;
   useEffect(() => {
+    loadUser();
     if (isAuthenticated) {
       props.history.push('/dashboard');
     }
@@ -36,6 +45,10 @@ const Login = props => {
       });
     }
   };
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <Fragment>

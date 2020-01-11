@@ -1,16 +1,21 @@
 import React, { useEffect, useContext, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import Todo from './todo/Todo';
-import AddBtn from '../layout/AddBtn';
+import Spinner from '../layout/Spinner';
 
 const Home = () => {
   const authContext = useContext(AuthContext);
-  const { loadUser } = authContext;
+  const { loadUser, loading } = authContext;
 
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
   }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Fragment>
       <section className="section section-posts grey lighten-4">
@@ -118,7 +123,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <AddBtn />
     </Fragment>
   );
 };
