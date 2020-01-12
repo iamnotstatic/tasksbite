@@ -33,6 +33,13 @@ const SideNav = props => {
           </li>
           <br />
           <li className="hoverable" style={{ padding: '10px' }}>
+            <Link href="#!" className="black-text" style={{ padding: '10px' }}>
+              <i className="material-icons left red-text">delete</i> Delete
+              account
+            </Link>
+          </li>
+          <br />
+          <li className="hoverable" style={{ padding: '10px' }}>
             <Link to="/" className="black-text">
               <i className="material-icons left">help</i> Help & Feedback
             </Link>

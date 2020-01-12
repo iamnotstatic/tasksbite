@@ -29,6 +29,15 @@ const Profile = () => {
               <div className="card-content">
                 <span className="card-title center">Profile</span>
                 <div className="row">
+                  <div class="file-field input-field">
+                    <div class="btn blue">
+                      <span>Upload Image</span>
+                      <input type="file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" />
+                    </div>
+                  </div>
                   <div className="input-field col s12">
                     <input
                       type="text"

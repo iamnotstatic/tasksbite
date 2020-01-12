@@ -8,7 +8,7 @@ const AddBtn = () => {
           href="#add-todo-modal"
           className="btn-floating btn-large blue darken-2 waves-effect waves-light modal-trigger"
         >
-          <i className="large material-icons">mode_edit</i>
+          <i className="large material-icons">add</i>
         </a>
         {/* <ul>
           <li>
