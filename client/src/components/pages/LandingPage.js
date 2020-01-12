@@ -12,7 +12,7 @@ const LandingPage = props => {
     }
 
     // eslint-disable-next-line
-  }, []);
+  }, [isAuthenticated, props.history]);
   return (
     <Fragment>
       <section className="section center section-landing">
