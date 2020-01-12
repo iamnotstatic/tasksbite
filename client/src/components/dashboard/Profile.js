@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import SideNav from './SideNav';
+import Spinner from '../layout/Spinner';
+import AuthContext from '../../context/auth/authContext';
 
 const Profile = () => {
+  const authContext = useContext(AuthContext);
+  const { loadUser, loading, user } = authContext;
+
+  useEffect(() => {
+    loadUser();
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <section className="section section-profile">
       <div className="valign-wrapper row login-box">
         <div className="container">
-          <div className="col s12 m3">hello</div>
-          <div className="col card s12 m8">
+          <div className="col s12 m4">
+            <SideNav />
+          </div>
+          <div className="col card s12 m7">
             <form>
               <div className="card-content">
                 <span className="card-title center">Profile</span>

@@ -22,6 +22,7 @@ const App = () => {
     // Init Materialize Js
     M.AutoInit();
   });
+
   return (
     <AuthState>
       <Router>
