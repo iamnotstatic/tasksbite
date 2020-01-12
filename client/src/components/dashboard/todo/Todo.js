@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
+import AddBtn from '../../layout/AddBtn';
 
 const Todo = () => {
   return (
     <Fragment>
+      <AddBtn />
       <div className="row">
         <div className="col s12 m6 l4">
           <div className="card-panel blue lighten-1 white-text center">

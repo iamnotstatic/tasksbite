@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import AddTodoModal from './components/dashboard/todo/AddTodoModal';
-import AddBtn from './components/layout/AddBtn';
 import EditTodoModal from './components/dashboard/todo/EditTodoModal';
 import Navbar from './components/layout/Navbar';
 import Register from './components/layout/auth/Register';
@@ -30,7 +29,6 @@ const App = () => {
           <Navbar />
           <AddTodoModal />
           <EditTodoModal />
-          <AddBtn />
 
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />

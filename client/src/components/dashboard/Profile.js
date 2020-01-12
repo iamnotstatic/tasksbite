@@ -15,6 +15,8 @@ const Profile = () => {
   if (loading) {
     return <Spinner />;
   }
+
+  const onChange = e => {};
   return (
     <section className="section section-profile">
       <div className="valign-wrapper row login-box">
@@ -33,6 +35,7 @@ const Profile = () => {
                       className="validate"
                       name="name"
                       value={user.name}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="input-field col s12">
@@ -41,6 +44,7 @@ const Profile = () => {
                       className="validate"
                       name="email"
                       value={user.email}
+                      onChange={onChange}
                     />
                   </div>
                   <div className="input-field col s12">
@@ -49,6 +53,7 @@ const Profile = () => {
                       type="password"
                       className="validate"
                       name="password"
+                      onChange={onChange}
                     />
                   </div>
                 </div>

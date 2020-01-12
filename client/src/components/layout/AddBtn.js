@@ -5,12 +5,12 @@ const AddBtn = () => {
     <Fragment>
       <div className="fixed-action-btn">
         <a
-          href="#!"
-          className="btn-floating btn-large blue darken-2 waves-effect waves-light"
+          href="#add-todo-modal"
+          className="btn-floating btn-large blue darken-2 waves-effect waves-light modal-trigger"
         >
-          <i className="large material-icons">add</i>
+          <i className="large material-icons">mode_edit</i>
         </a>
-        <ul>
+        {/* <ul>
           <li>
             <a
               className="btn-floating green modal-trigger"
@@ -19,7 +19,7 @@ const AddBtn = () => {
               <i className="material-icons">mode_edit</i>
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </Fragment>
   );
