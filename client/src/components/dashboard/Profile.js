@@ -28,12 +28,20 @@ const Profile = () => {
                 <span className="card-title center">Profile</span>
                 <div className="row">
                   <div className="input-field col s12">
-                    <label htmlFor="email">Name</label>
-                    <input type="text" className="validate" name="name" />
+                    <input
+                      type="text"
+                      className="validate"
+                      name="name"
+                      value={user.name}
+                    />
                   </div>
                   <div className="input-field col s12">
-                    <label htmlFor="email">Email address</label>
-                    <input type="email" className="validate" name="email" />
+                    <input
+                      type="email"
+                      className="validate"
+                      name="email"
+                      value={user.email}
+                    />
                   </div>
                   <div className="input-field col s12">
                     <label htmlFor="password">Password </label>

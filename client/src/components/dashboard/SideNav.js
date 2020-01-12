@@ -1,7 +1,6 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import { Link } from 'react-router-dom';
-import Spinner from '../layout/Spinner';
 
 const SideNav = props => {
   const authContext = useContext(AuthContext);
