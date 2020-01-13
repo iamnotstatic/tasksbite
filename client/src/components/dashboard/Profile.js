@@ -9,12 +9,15 @@ const Profile = () => {
   const [profile, updateUser] = useState({
     name: '',
     email: '',
-    avatar: '',
     password: ''
   });
+
+  const [upload, avatarUpload] = useState({ file: null });
+
   const authContext = useContext(AuthContext);
-  const { loadUser, loading, user, updateProfile } = authContext;
-  const { name, email, avatar, password } = profile;
+  const { loadUser, loading, user, updateProfile, uplaodAvatar } = authContext;
+  const { name, email, password } = profile;
+  const { file } = upload;
 
   useEffect(() => {
     loadUser();
@@ -37,6 +40,16 @@ const Profile = () => {
     }
   };
 
+  const onSubmitFile = e => {
+    e.preventDefault();
+    const data = avatarUpload(file);
+  };
+
+  const onChangeFile = e => {
+    avatarUpload({ file: e.target.files[0] });
+    console.log(e.target.files);
+  };
+
   if (loading) {
     return <Spinner />;
   }
@@ -49,11 +62,15 @@ const Profile = () => {
             <SideNav />
           </div>
           <div className="col card s12 m7">
+            <form onSubmit={onSubmitFile}>
+              <input type="file" onChange={onChangeFile} />
+              <input type="submit" value="Upload" />
+            </form>
             <form onSubmit={onSubmit} encType="multipart/form-data">
               <div className="card-content">
                 <span className="card-title center">Profile</span>
                 <div className="row">
-                  <div className="file-field input-field">
+                  {/* <div className="file-field input-field">
                     <div className="btn blue">
                       <span>Upload Image</span>
                       <input
@@ -66,7 +83,7 @@ const Profile = () => {
                     <div className="file-path-wrapper">
                       <input className="file-path validate" type="text" />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="input-field col s12">
                     <input
                       type="text"

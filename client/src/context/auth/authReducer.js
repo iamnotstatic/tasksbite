@@ -9,7 +9,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
-  DELETE_ACCOUNT
+  DELETE_ACCOUNT,
+  UPLOAD_AVATAR
 } from '../types';
 
 export default (state, action) => {
@@ -45,6 +46,13 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
         user: action.payload
+      };
+
+    case UPLOAD_AVATAR:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false
       };
 
     case REGISTER_FAIL:

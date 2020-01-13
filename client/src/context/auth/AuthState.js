@@ -14,6 +14,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  UPLOAD_AVATAR,
   DELETE_ACCOUNT,
   CLEAR_ERRORS
 } from '../types';
@@ -95,6 +96,7 @@ const AuthState = props => {
     }
   };
 
+  // Update Profile
   const updateProfile = async formData => {
     const config = {
       headers: {
@@ -106,6 +108,21 @@ const AuthState = props => {
       dispatch({
         type: UPDATE_PROFILE,
         payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_FAIL,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
+  // Upload Avatar
+  const uplaodAvatar = async formData => {
+    try {
+      await axios.post('/api/users/me/avatar', formData);
+      dispatch({
+        type: UPLOAD_AVATAR
       });
     } catch (err) {
       dispatch({
@@ -150,6 +167,7 @@ const AuthState = props => {
         register,
         login,
         updateProfile,
+        uplaodAvatar,
         logout,
         deleteAccount,
         clearErrors

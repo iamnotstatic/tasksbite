@@ -15,6 +15,7 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
+export const UPLOAD_AVATAR = 'UPLOAD_AVATAR';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
