@@ -9,6 +9,7 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   UPDATE_PROFILE,
+  UPDATE_FAIL,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -94,6 +95,26 @@ const AuthState = props => {
     }
   };
 
+  const updateProfile = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    try {
+      const res = await axios.patch('/api/users/me', formData, config);
+      dispatch({
+        type: UPDATE_PROFILE,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: UPDATE_FAIL,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
   // Logout
   const logout = async () => {
     try {
@@ -128,6 +149,7 @@ const AuthState = props => {
         loadUser,
         register,
         login,
+        updateProfile,
         logout,
         deleteAccount,
         clearErrors

@@ -1,22 +1,46 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import SideNav from './SideNav';
 import Spinner from '../layout/Spinner';
 import AuthContext from '../../context/auth/authContext';
 
+import M from 'materialize-css/dist/js/materialize.min';
+
 const Profile = () => {
+  const [profile, updateUser] = useState({
+    name: '',
+    email: '',
+    avatar: '',
+    password: ''
+  });
   const authContext = useContext(AuthContext);
-  const { loadUser, loading, user } = authContext;
+  const { loadUser, loading, user, updateProfile } = authContext;
+  const { name, email, avatar, password } = profile;
 
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
   }, []);
 
+  const onChange = e =>
+    updateUser({ ...profile, [e.target.name]: e.target.value });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (name === '' || email === '') {
+      M.toast({ html: 'Email or name is same' });
+    } else {
+      updateProfile({
+        name,
+        email
+      });
+      M.toast({ html: 'Profile updated successfully' });
+    }
+  };
+
   if (loading) {
     return <Spinner />;
   }
 
-  const onChange = e => {};
   return (
     <section className="section section-profile">
       <div className="valign-wrapper row login-box">
@@ -25,14 +49,19 @@ const Profile = () => {
             <SideNav />
           </div>
           <div className="col card s12 m7">
-            <form>
+            <form onSubmit={onSubmit} encType="multipart/form-data">
               <div className="card-content">
                 <span className="card-title center">Profile</span>
                 <div className="row">
                   <div className="file-field input-field">
                     <div className="btn blue">
                       <span>Upload Image</span>
-                      <input type="file" />
+                      <input
+                        type="file"
+                        name="avatar"
+                        value={avatar}
+                        onChange={onChange}
+                      />
                     </div>
                     <div className="file-path-wrapper">
                       <input className="file-path validate" type="text" />
@@ -43,7 +72,7 @@ const Profile = () => {
                       type="text"
                       className="validate"
                       name="name"
-                      value={user.name}
+                      value={name || user.name}
                       onChange={onChange}
                     />
                   </div>
@@ -52,16 +81,18 @@ const Profile = () => {
                       type="email"
                       className="validate"
                       name="email"
-                      value={user.email}
+                      value={email || user.email}
                       onChange={onChange}
                     />
                   </div>
+
                   <div className="input-field col s12">
                     <label htmlFor="password">Password </label>
                     <input
                       type="password"
                       className="validate"
                       name="password"
+                      value={password}
                       onChange={onChange}
                     />
                   </div>
