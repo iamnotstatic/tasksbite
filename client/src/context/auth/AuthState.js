@@ -8,10 +8,12 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
+  UPDATE_PROFILE,
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  DELETE_ACCOUNT,
   CLEAR_ERRORS
 } from '../types';
 
@@ -102,6 +104,16 @@ const AuthState = props => {
     }
   };
 
+  // Delete Account
+  const deleteAccount = async () => {
+    try {
+      await axios.delete('/api/users/me');
+      dispatch({ type: DELETE_ACCOUNT });
+    } catch (error) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
+
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
@@ -117,6 +129,7 @@ const AuthState = props => {
         register,
         login,
         logout,
+        deleteAccount,
         clearErrors
       }}
     >
