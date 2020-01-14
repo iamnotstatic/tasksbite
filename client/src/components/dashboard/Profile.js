@@ -22,25 +22,35 @@ const Profile = () => {
   useEffect(() => {
     loadUser();
     if (user) {
-      updateUser({ name: user.name, email: user.email, password: password });
+      updateUser({ name: user.name, email: user.email, password });
     }
     // eslint-disable-next-line
   }, []);
 
-  const onChange = e =>
+  const onChange = e => {
     updateUser({ ...profile, [e.target.name]: e.target.value });
+  };
 
   const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '') {
-      M.toast({ html: 'Name and Email is required' });
+      M.toast({
+        html: '<span class="red-text"> Name or Email is required</span>'
+      });
     } else {
       updateProfile({
         name,
-        email,
-        password
+        email
       });
-      M.toast({ html: 'Profile updated successfully' });
+
+      if (password > 7) {
+        updateProfile({
+          password
+        });
+      }
+      M.toast({
+        html: '<span class="green-text">Profile updated successfully</span>'
+      });
     }
   };
 
@@ -95,6 +105,7 @@ const Profile = () => {
                       name="name"
                       value={name}
                       onChange={onChange}
+                      autoComplete="off"
                     />
                   </div>
                   <div className="input-field col s12">
