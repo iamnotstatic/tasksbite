@@ -18,60 +18,51 @@ const TodoItem = () => {
       <table className="striped responsive-table">
         <thead>
           <tr>
-            <th>Title</th>
             <th>Description</th>
             <th>Status</th>
             <th>Date Created</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
-
-        {todos !== null && !loading ? (
-          <TransitionGroup>
-            {todos.map(todo => (
-              <CSSTransition>
-                <tr>
-                  <td>{todo.description}</td>
-                </tr>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        ) : (
-          <Spinner />
-        )}
-
-        {/* <tbody>
-          <tr>
-            {todos !== null && !loading ? (
-              <TransitionGroup>
-                {todos.map(todo => (
-                  <CSSTransition key={todo._id} timeout={500} classNames="item">
-                    (<td>{todo.description}</td>
-                    <td>
-                      <i className="material-icons green-text">check</i>
-                    </td>
+        <tbody>
+          {todos !== null && !loading ? (
+            <Fragment>
+              {todos.map(todo => (
+                <CSSTransition timeout={500} key={todo._id} classNames="item">
+                  <tr>
+                    <td>{todo.description}</td>
+                    {todo.completed ? (
+                      <td>
+                        <i className="material-icons green-text">check</i>
+                      </td>
+                    ) : (
+                      <td>
+                        <i className="material-icons">close</i>
+                      </td>
+                    )}
                     <td>{todo.createdAt}</td>
                     <td>
                       <a
                         href="#edit-todo-modal"
-                        className="secondary-content modal-trigger"
+                        className="secondary-content modal-trigger left"
                       >
                         <i className="material-icons grey-text">create</i>
                       </a>
                     </td>
                     <td>
-                      <a href="#!" className="secondary-content">
+                      <a href="#!" className="secondary-content left">
                         <i className="material-icons red-text">delete</i>
                       </a>
                     </td>
-                    )
-                  </CSSTransition>
-                ))}
-              </TransitionGroup>
-            ) : (
-              <h1>Hello</h1>
-            )}
-          </tr>
-        </tbody> */}
+                  </tr>
+                </CSSTransition>
+              ))}
+            </Fragment>
+          ) : (
+            <Spinner />
+          )}
+        </tbody>
       </table>
 
       <div className="card-action">
