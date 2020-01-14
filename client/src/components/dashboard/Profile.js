@@ -21,6 +21,9 @@ const Profile = () => {
 
   useEffect(() => {
     loadUser();
+    if (user) {
+      updateUser({ name: user.name, email: user.email, password: password });
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -30,11 +33,12 @@ const Profile = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '') {
-      M.toast({ html: 'Email or name is same' });
+      M.toast({ html: 'Name and Email is required' });
     } else {
       updateProfile({
         name,
-        email
+        email,
+        password
       });
       M.toast({ html: 'Profile updated successfully' });
     }
@@ -89,7 +93,7 @@ const Profile = () => {
                       type="text"
                       className="validate"
                       name="name"
-                      value={name || user.name}
+                      value={name}
                       onChange={onChange}
                     />
                   </div>
@@ -98,7 +102,7 @@ const Profile = () => {
                       type="email"
                       className="validate"
                       name="email"
-                      value={email || user.email}
+                      value={email}
                       onChange={onChange}
                     />
                   </div>
@@ -111,6 +115,7 @@ const Profile = () => {
                       name="password"
                       value={password}
                       onChange={onChange}
+                      minLength="7"
                     />
                   </div>
                 </div>
