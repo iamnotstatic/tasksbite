@@ -1,8 +1,22 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import TodoItem from './TodoItem';
 import AddBtn from '../../layout/AddBtn';
+import Spinner from '../../layout/Spinner';
+import TodoContext from '../../../context/todo/todoContext';
 
 const Todos = () => {
+  const todoContext = useContext(TodoContext);
+  const { getTodos, loading, todos } = todoContext;
+
+  useEffect(() => {
+    getTodos();
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <Fragment>
       <AddBtn />
@@ -32,7 +46,11 @@ const Todos = () => {
       <div className="card">
         <div className="card-content">
           <span className="card-title center">TodoList</span>
-          <TodoItem />
+          {todos !== [] && todos.length === 0 && !loading ? (
+            <h5 className="center">Please add a todo</h5>
+          ) : (
+            <TodoItem />
+          )}
         </div>
       </div>
     </Fragment>
