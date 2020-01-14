@@ -10,11 +10,17 @@ import LandingPage from './components/pages/LandingPage';
 import Dashboard from './components/dashboard/Home';
 import Profile from './components/dashboard/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
+import setAuthToken from './utils/setAuthToken';
 import NotFound from './components/pages/NotFound';
 
 import M from 'materialize-css/dist/js/materialize.min';
 import AuthState from './context/auth/AuthState';
+import TodoState from './context/todo/TodoState';
 import './App.css';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   useEffect(() => {
@@ -24,22 +30,23 @@ const App = () => {
 
   return (
     <AuthState>
-      <Router>
-        <div className="app">
-          <Navbar />
-          <AddTodoModal />
-          <EditTodoModal />
-
-          <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route component={NotFound} />
-          </Switch>
-        </div>
-      </Router>
+      <TodoState>
+        <Router>
+          <div className="app">
+            <Navbar />
+            <AddTodoModal />
+            <EditTodoModal />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </Router>
+      </TodoState>
     </AuthState>
   );
 };

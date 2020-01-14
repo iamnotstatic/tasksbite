@@ -20,11 +20,19 @@ export default (state, action) => {
         loading: false
       };
 
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: [action.payload, ...state.todos],
+        loading: false
+      };
+
     case TODO_ERROR:
       return {
         ...state,
         error: action.payload
       };
+
     default:
       return state;
   }

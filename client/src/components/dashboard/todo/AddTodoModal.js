@@ -1,22 +1,47 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import TodoContext from '../../../context/todo/todoContext';
+
+import M from 'materialize-css/dist/js/materialize.min';
 
 const AddTodoModal = () => {
+  const [todo, setTodo] = useState({
+    description: ''
+  });
+  const todoContext = useContext(TodoContext);
+  const { addTodo } = todoContext;
+  const { description } = todo;
+
+  const onChange = e => setTodo({ ...todo, [e.target.name]: e.target.value });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (description === '') {
+      M.toast({ html: '<span class="red-text">All field are required</span>' });
+    } else {
+      addTodo({
+        description
+      });
+    }
+    setTodo({
+      description: ''
+    });
+    M.toast({ html: '<span class="green-text">Todo added</span>' });
+  };
+
   return (
     <div id="add-todo-modal" className="modal">
       <div className="modal-content">
         <h4 className="center">Add a Todo</h4>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="card-content">
             <div className="row">
               <div className="input-field col s12">
-                <label htmlFor="email">Title</label>
-                <input type="text" className="validate" name="name" />
-              </div>
-              <div className="input-field col s12">
                 <label htmlFor="email">Description</label>
                 <textarea
-                  name="desc"
+                  name="description"
                   className="materialize-textarea"
+                  value={description}
+                  onChange={onChange}
                 ></textarea>
               </div>
             </div>

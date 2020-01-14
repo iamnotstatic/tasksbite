@@ -17,7 +17,7 @@ import {
 
 const TodoState = props => {
   const initialState = {
-    todos: null,
+    todos: [],
     current: null,
     filtered: null,
     error: null
@@ -33,7 +33,26 @@ const TodoState = props => {
         type: GET_TODOS,
         payload: res.data
       });
-    } catch (er) {
+    } catch (err) {
+      dispatch({
+        type: TODO_ERROR,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
+  // Add todo
+  const addTodo = async todo => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/api/tasks', todo, config);
+      dispatch({ type: ADD_TODO, payload: res.data });
+    } catch (err) {
       dispatch({
         type: TODO_ERROR,
         payload: err.response.request.responseText
