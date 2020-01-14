@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext';
-import Todo from './todo/Todo';
+import Todos from './todo/Todos';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 
@@ -59,7 +59,7 @@ const Home = () => {
             </div>
           </div>
           <div className="col s12 m8">
-            <Todo />
+            <Todos />
           </div>
         </div>
       </section>
