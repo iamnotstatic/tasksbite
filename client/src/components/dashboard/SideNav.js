@@ -20,7 +20,9 @@ const SideNav = props => {
       )
     ) {
       deleteAccount();
-      M.toast({ html: 'Account Deleted successfully' });
+      M.toast({
+        html: '<span classs="green-text">Account Deleted successfully</span>'
+      });
     }
     clearErrors();
   };

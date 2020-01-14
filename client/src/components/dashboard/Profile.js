@@ -43,7 +43,7 @@ const Profile = () => {
         email
       });
 
-      if (password > 7) {
+      if (password >= 7) {
         updateProfile({
           password
         });
@@ -56,12 +56,11 @@ const Profile = () => {
 
   const onSubmitFile = e => {
     e.preventDefault();
-    const data = avatarUpload(file);
+    uplaodAvatar(file);
   };
 
   const onChangeFile = e => {
     avatarUpload({ file: e.target.files[0] });
-    console.log(e.target.files);
   };
 
   if (loading) {
@@ -76,10 +75,10 @@ const Profile = () => {
             <SideNav />
           </div>
           <div className="col card s12 m7">
-            <form onSubmit={onSubmitFile}>
+            {/* <form onSubmit={onSubmitFile}>
               <input type="file" onChange={onChangeFile} />
               <input type="submit" value="Upload" />
-            </form>
+            </form> */}
             <form onSubmit={onSubmit} encType="multipart/form-data">
               <div className="card-content">
                 <span className="card-title center">Profile</span>
@@ -106,6 +105,7 @@ const Profile = () => {
                       value={name}
                       onChange={onChange}
                       autoComplete="off"
+                      placeholder="Name"
                     />
                   </div>
                   <div className="input-field col s12">
@@ -115,6 +115,7 @@ const Profile = () => {
                       name="email"
                       value={email}
                       onChange={onChange}
+                      placeholder="Email address"
                     />
                   </div>
 
