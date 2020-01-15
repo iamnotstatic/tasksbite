@@ -14,19 +14,19 @@ const TodoItem = () => {
 
   return (
     <Fragment>
-      <table className="striped responsive-table">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Date Created</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos !== null && !loading ? (
-            <Fragment>
+      {todos !== null && !loading ? (
+        <Fragment>
+          <table className="striped responsive-table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Date Created</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
               {todos.map(todo => (
                 <CSSTransition timeout={500} key={todo._id} classNames="item">
                   <tr>
@@ -57,12 +57,12 @@ const TodoItem = () => {
                   </tr>
                 </CSSTransition>
               ))}
-            </Fragment>
-          ) : (
-            <Spinner />
-          )}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </Fragment>
+      ) : (
+        <Spinner />
+      )}
 
       <div className="card-action">
         <ul className="pagination">
