@@ -10,7 +10,8 @@ import {
   LOGOUT,
   CLEAR_ERRORS,
   DELETE_ACCOUNT,
-  UPLOAD_AVATAR
+  UPLOAD_AVATAR,
+  LOGOUT_ALL
 } from '../types';
 
 export default (state, action) => {
@@ -59,6 +60,7 @@ export default (state, action) => {
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
+    case LOGOUT_ALL:
     case DELETE_ACCOUNT:
       localStorage.removeItem('token');
       return {

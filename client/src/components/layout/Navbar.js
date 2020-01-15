@@ -14,11 +14,17 @@ const Navbar = ({ title }, props) => {
 
   const authLinks = (
     <Fragment>
-      <li className="center">{user && user.name}</li>
       <li>
-        <Link to="#!" onClick={onLogout}>
-          <i className="fa fa-sign-out"></i>
-          <span className="hide-sm">Logout</span>
+        <Link to="#!" style={{ textTransform: 'uppercase' }}>
+          <i class="material-icons left">face</i> <b>{user && user.name}</b>
+        </Link>
+      </li>
+      <li>
+        <Link to="#!" onClick={onLogout} style={{ textTransform: 'uppercase' }}>
+          <i className="material-icons left">input</i>
+          <b>
+            <span className="hide-sm">Logout</span>
+          </b>
         </Link>
       </li>
     </Fragment>

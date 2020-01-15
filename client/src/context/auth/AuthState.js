@@ -14,6 +14,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  LOGOUT_ALL,
   UPLOAD_AVATAR,
   DELETE_ACCOUNT,
   CLEAR_ERRORS
@@ -142,6 +143,16 @@ const AuthState = props => {
     }
   };
 
+  // Logout from all devices
+  const logoutAll = async () => {
+    try {
+      await axios.post('/api/users/logoutAll');
+      dispatch({ type: LOGOUT_ALL });
+    } catch (err) {
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
+
   // Delete Account
   const deleteAccount = async () => {
     try {
@@ -169,6 +180,7 @@ const AuthState = props => {
         updateProfile,
         uplaodAvatar,
         logout,
+        logoutAll,
         deleteAccount,
         clearErrors
       }}

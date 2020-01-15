@@ -6,12 +6,23 @@ import M from 'materialize-css/dist/js/materialize.min';
 
 const SideNav = props => {
   const authContext = useContext(AuthContext);
-  const { loadUser, user, deleteAccount, clearErrors } = authContext;
+  const { loadUser, user, deleteAccount, clearErrors, logoutAll } = authContext;
 
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
   }, []);
+
+  const onLogoutAll = () => {
+    if (
+      window.confirm(
+        `${user.name} are sure you want to Logout from all devices`
+      )
+    ) {
+      logoutAll();
+    }
+    clearErrors();
+  };
 
   const onDelete = () => {
     if (
@@ -61,8 +72,23 @@ const SideNav = props => {
               style={{ padding: '10px' }}
               onClick={onDelete}
             >
-              <i className="material-icons left red-text">delete</i> Delete
+              <i className="material-icons left red-text">delete</i>Delete
               account
+            </Link>
+          </li>
+          <br />
+          <li className="hoverable" style={{ padding: '10px' }}>
+            <Link
+              to="#!"
+              className="black-text"
+              style={{ padding: '10px' }}
+              onClick={onLogoutAll}
+            >
+              <i
+                className="fa fa-sign-out left red-text"
+                style={{ fontSize: '25px' }}
+              ></i>{' '}
+              Logout from all devices
             </Link>
           </li>
           <br />
