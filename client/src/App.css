@@ -14,6 +14,13 @@
   padding: 20px;
 }
 
+tr td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 250px;
+}
+
 .loader {
   position: absolute;
   z-index: 5;

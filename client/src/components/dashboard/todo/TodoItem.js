@@ -4,6 +4,8 @@ import TodoContext from '../../../context/todo/todoContext';
 import Spinner from '../../layout/Spinner';
 
 import M from 'materialize-css/dist/js/materialize.min';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const TodoItem = () => {
   const todoContext = useContext(TodoContext);
@@ -25,7 +27,7 @@ const TodoItem = () => {
     <Fragment>
       {todos !== null && !loading ? (
         <Fragment>
-          <table className="striped responsive-table">
+          <table className="striped responsive-table" style={{ width: '100%' }}>
             <thead>
               <tr>
                 <th>Description</th>
@@ -57,7 +59,11 @@ const TodoItem = () => {
                         <i className="material-icons">close</i>
                       </td>
                     )}
-                    <td>{todo.createdAt}</td>
+                    <td>
+                      <Moment format="MMMM Do YYYY, h:mm:ss a">
+                        {todo.createdAt}
+                      </Moment>
+                    </td>
                     <td>
                       <a
                         href="#edit-todo-modal"
@@ -133,5 +139,11 @@ const TodoItem = () => {
     </Fragment>
   );
 };
+// const truncate = {
+//   whiteSpace: 'nowrap',
+//   textOverflow: 'ellipsis',
+//   overflow: 'hidden',
+//   maxWidth: '3px'
+// };
 
 export default TodoItem;

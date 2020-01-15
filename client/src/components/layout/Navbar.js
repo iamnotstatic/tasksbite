@@ -16,7 +16,7 @@ const Navbar = ({ title }, props) => {
     <Fragment>
       <li>
         <Link to="#!" style={{ textTransform: 'uppercase' }}>
-          <i class="material-icons left">face</i> <b>{user && user.name}</b>
+          <i className="material-icons left">face</i> <b>{user && user.name}</b>
         </Link>
       </li>
       <li>

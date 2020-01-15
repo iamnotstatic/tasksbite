@@ -30,7 +30,7 @@ const TodoState = props => {
   // Get Todos
   const getTodos = async () => {
     try {
-      const res = await axios.get('/api/tasks?limit=10&skip=0');
+      const res = await axios.get('/api/tasks?sortBy=createdAt:desc');
       dispatch({
         type: GET_TODOS,
         payload: res.data
