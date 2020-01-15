@@ -2,11 +2,12 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import TodoContext from '../../../context/todo/todoContext';
 import Spinner from '../../layout/Spinner';
-import { SET_CURRENT } from '../../../context/types';
+
+import M from 'materialize-css/dist/js/materialize.min';
 
 const TodoItem = () => {
   const todoContext = useContext(TodoContext);
-  const { getTodos, loading, todos, setCurrent } = todoContext;
+  const { getTodos, loading, todos, setCurrent, deleteTodo } = todoContext;
 
   useEffect(() => {
     getTodos();
@@ -52,7 +53,16 @@ const TodoItem = () => {
                       </a>
                     </td>
                     <td>
-                      <a href="#!" className="secondary-content left">
+                      <a
+                        href="#!"
+                        className="secondary-content left"
+                        onClick={() => {
+                          deleteTodo(todo._id);
+                          M.toast({
+                            html: "<span class='green-text'>Todo deleted</span>"
+                          });
+                        }}
+                      >
                         <i className="material-icons red-text">delete</i>
                       </a>
                     </td>

@@ -60,6 +60,19 @@ const TodoState = props => {
     }
   };
 
+  // Delete Todo
+  const deleteTodo = async id => {
+    try {
+      await axios.delete(`/api/tasks/${id}`);
+      dispatch({ type: DELETE_TODO, payload: id });
+    } catch (err) {
+      dispatch({
+        type: TODO_ERROR,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
   // Update Todo
   const updateTodo = async (todo, id) => {
     const config = {
@@ -101,6 +114,7 @@ const TodoState = props => {
         error: state.error,
         getTodos,
         addTodo,
+        deleteTodo,
         updateTodo,
         setCurrent,
         clearCurrent

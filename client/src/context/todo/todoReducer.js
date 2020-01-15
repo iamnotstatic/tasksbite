@@ -36,6 +36,13 @@ export default (state, action) => {
         loading: false
       };
 
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo._id !== action.payload),
+        loading: false
+      };
+
     case SET_CURRENT:
       return {
         ...state,
