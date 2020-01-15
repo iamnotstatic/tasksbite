@@ -2,10 +2,11 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import TodoContext from '../../../context/todo/todoContext';
 import Spinner from '../../layout/Spinner';
+import { SET_CURRENT } from '../../../context/types';
 
 const TodoItem = () => {
   const todoContext = useContext(TodoContext);
-  const { getTodos, loading, todos } = todoContext;
+  const { getTodos, loading, todos, setCurrent } = todoContext;
 
   useEffect(() => {
     getTodos();
@@ -45,6 +46,7 @@ const TodoItem = () => {
                       <a
                         href="#edit-todo-modal"
                         className="secondary-content modal-trigger left"
+                        onClick={() => setCurrent(todo)}
                       >
                         <i className="material-icons grey-text">create</i>
                       </a>

@@ -27,6 +27,18 @@ export default (state, action) => {
         loading: false
       };
 
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
+      };
+
     case TODO_ERROR:
       return {
         ...state,

@@ -28,7 +28,7 @@ const TodoState = props => {
   // Get Todos
   const getTodos = async () => {
     try {
-      const res = await axios.get('/api/tasks?limit=5&skip=0');
+      const res = await axios.get('/api/tasks?limit=10&skip=0');
       dispatch({
         type: GET_TODOS,
         payload: res.data
@@ -53,14 +53,27 @@ const TodoState = props => {
       const res = await axios.post('/api/tasks', todo, config);
       dispatch({ type: ADD_TODO, payload: res.data });
     } catch (err) {
-      console.log(err);
-      // dispatch({
-      //   type: TODO_ERROR,
-      //   payload: err.response.request.responseText
-      // });
+      dispatch({
+        type: TODO_ERROR,
+        payload: err.response.request.responseText
+      });
     }
   };
 
+  // Set Current
+  const setCurrent = todo => {
+    dispatch({
+      type: SET_CURRENT,
+      payload: todo
+    });
+  };
+
+  // Clear Current
+  const clearCurrent = () => {
+    dispatch({
+      type: CLEAR_CURRENT
+    });
+  };
   return (
     <TodoContext.Provider
       value={{
@@ -69,7 +82,9 @@ const TodoState = props => {
         filtered: state.filtered,
         error: state.error,
         getTodos,
-        addTodo
+        addTodo,
+        setCurrent,
+        clearCurrent
       }}
     >
       {props.children}
