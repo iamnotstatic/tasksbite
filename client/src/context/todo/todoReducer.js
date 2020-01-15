@@ -27,6 +27,15 @@ export default (state, action) => {
         loading: false
       };
 
+    case UPDATE_TODO:
+      return {
+        ...state,
+        todos: state.todos.map(todo =>
+          todo._id === action.payload._id ? action.payload : todo
+        ),
+        loading: false
+      };
+
     case SET_CURRENT:
       return {
         ...state,

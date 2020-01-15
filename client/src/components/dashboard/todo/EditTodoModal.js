@@ -25,14 +25,20 @@ const EditTodoModal = () => {
       });
     } else {
       const updTodo = {
-        id: current.id,
         description,
         completed
       };
-      updateTodo(updTodo);
+
+      const id = {
+        _id: current._id
+      };
+      updateTodo(updTodo, id);
+
+      M.toast({
+        html: "<span class='green-text'>Todo updated successfully</span>"
+      });
 
       // Clear Fields
-      setDescription('');
       setCompleted(false);
     }
   };
@@ -71,7 +77,7 @@ const EditTodoModal = () => {
             </div>
             <div className="card-action right-align center text-white">
               <button
-                className="btn blue waves-effect waves-light"
+                className="modal-close btn blue waves-effect waves-light"
                 type="submit"
               >
                 Updated <i className="material-icons right">send</i>

@@ -60,6 +60,24 @@ const TodoState = props => {
     }
   };
 
+  // Update Todo
+  const updateTodo = async (todo, id) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    try {
+      const res = await axios.patch(`/api/tasks/${id._id}`, todo, config);
+      dispatch({ type: UPDATE_TODO, payload: res.data });
+    } catch (err) {
+      dispatch({
+        type: TODO_ERROR,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
   // Set Current
   const setCurrent = todo => {
     dispatch({
@@ -83,6 +101,7 @@ const TodoState = props => {
         error: state.error,
         getTodos,
         addTodo,
+        updateTodo,
         setCurrent,
         clearCurrent
       }}
