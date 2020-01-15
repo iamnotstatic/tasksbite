@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import AddTodoModal from './components/dashboard/todo/AddTodoModal';
 import EditTodoModal from './components/dashboard/todo/EditTodoModal';
+import ViewModalModal from './components/dashboard/todo/ViewTodoModal';
 import Navbar from './components/layout/Navbar';
 import Register from './components/layout/auth/Register';
 import Login from './components/layout/auth/Login';
@@ -35,6 +36,7 @@ const App = () => {
           <div className="app">
             <Navbar />
             <AddTodoModal />
+            <ViewModalModal />
             <EditTodoModal />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

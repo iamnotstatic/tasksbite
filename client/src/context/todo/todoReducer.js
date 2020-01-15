@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
   GET_TODOS,
+  GET_TODO,
   SET_CURRENT,
   CLEAR_CURRENT,
   DELETE_TODO,
@@ -17,6 +18,13 @@ export default (state, action) => {
       return {
         ...state,
         todos: action.payload,
+        loading: false
+      };
+
+    case GET_TODO:
+      return {
+        ...state,
+        todo: action.payload,
         loading: false
       };
 

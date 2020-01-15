@@ -7,7 +7,14 @@ import M from 'materialize-css/dist/js/materialize.min';
 
 const TodoItem = () => {
   const todoContext = useContext(TodoContext);
-  const { getTodos, loading, todos, setCurrent, deleteTodo } = todoContext;
+  const {
+    getTodos,
+    getTodo,
+    loading,
+    todos,
+    setCurrent,
+    deleteTodo
+  } = todoContext;
 
   useEffect(() => {
     getTodos();
@@ -32,7 +39,15 @@ const TodoItem = () => {
               {todos.map(todo => (
                 <CSSTransition timeout={500} key={todo._id} classNames="item">
                   <tr>
-                    <td>{todo.description}</td>
+                    <td>
+                      <a
+                        href="#view-todo-modal"
+                        className="modal-trigger"
+                        onClick={() => getTodo(todo._id)}
+                      >
+                        {todo.description}
+                      </a>
+                    </td>
                     {todo.completed ? (
                       <td>
                         <i className="material-icons green-text">check</i>

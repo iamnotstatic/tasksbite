@@ -5,6 +5,7 @@ import todoReducer from './todoReducer';
 import {
   ADD_TODO,
   GET_TODOS,
+  GET_TODO,
   SET_CURRENT,
   CLEAR_CURRENT,
   DELETE_TODO,
@@ -18,6 +19,7 @@ import {
 const TodoState = props => {
   const initialState = {
     todos: null,
+    todo: null,
     current: null,
     filtered: null,
     error: null
@@ -33,6 +35,19 @@ const TodoState = props => {
         type: GET_TODOS,
         payload: res.data
       });
+    } catch (err) {
+      dispatch({
+        type: TODO_ERROR,
+        payload: err.response.request.responseText
+      });
+    }
+  };
+
+  // // Get Todo
+  const getTodo = async id => {
+    try {
+      const res = await axios.get(`/api/tasks/${id}`);
+      dispatch({ type: GET_TODO, payload: res.data });
     } catch (err) {
       dispatch({
         type: TODO_ERROR,
@@ -109,10 +124,12 @@ const TodoState = props => {
     <TodoContext.Provider
       value={{
         todos: state.todos,
+        todo: state.todo,
         current: state.current,
         filtered: state.filtered,
         error: state.error,
         getTodos,
+        getTodo,
         addTodo,
         deleteTodo,
         updateTodo,
