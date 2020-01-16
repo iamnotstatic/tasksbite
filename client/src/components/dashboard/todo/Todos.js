@@ -73,9 +73,9 @@ const Todos = () => {
       </div>
       <div className="card">
         <div className="card-content">
-          <span className="card-title center">TodoList</span>
+          <span className="card-title center">Tasks</span>
           {todos !== null && todos.length === 0 && !loading ? (
-            <h5 className="center">Please add a todo</h5>
+            <h5 className="center">Please add a task</h5>
           ) : (
             <TodoItem />
           )}

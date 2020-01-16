@@ -82,6 +82,6 @@ Navbar.protoTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Todo Keeper'
+  title: 'Tasksbite'
 };
 export default Navbar;

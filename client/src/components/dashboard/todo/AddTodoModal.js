@@ -4,15 +4,11 @@ import TodoContext from '../../../context/todo/todoContext';
 import M from 'materialize-css/dist/js/materialize.min';
 
 const AddTodoModal = () => {
-  const [todo, setTodo] = useState({
-    description: '',
-    completed: false
-  });
+  const [description, setDescription] = useState('');
+  const [completed, setCompleted] = useState(false);
+
   const todoContext = useContext(TodoContext);
   const { addTodo } = todoContext;
-  const { description, completed } = todo;
-
-  const onChange = e => setTodo({ ...todo, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
@@ -20,12 +16,12 @@ const AddTodoModal = () => {
       M.toast({ html: '<span class="red-text">All field are required</span>' });
     } else {
       addTodo({
-        description
+        description,
+        completed
       });
     }
-    setTodo({
-      description: ''
-    });
+    setDescription('');
+    setCompleted(false);
     M.toast({ html: '<span class="green-text">Todo added</span>' });
   };
 
@@ -42,7 +38,7 @@ const AddTodoModal = () => {
                   name="description"
                   className="materialize-textarea"
                   value={description}
-                  onChange={onChange}
+                  onChange={e => setDescription(e.target.value)}
                 ></textarea>
               </div>
               <div className="input-field col s12">
@@ -54,7 +50,7 @@ const AddTodoModal = () => {
                       className="filled-in"
                       checked={completed}
                       value={completed}
-                      onChange={e => setTodo(!completed)}
+                      onChange={e => setCompleted(!completed)}
                     />
                     <span>Completed</span>
                   </label>
