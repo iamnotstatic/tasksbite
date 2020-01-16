@@ -33,10 +33,14 @@ const Navbar = ({ title }, props) => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/register">
+          <b> Register</b>
+        </Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/login">
+          <b>Login</b>
+        </Link>
       </li>
     </Fragment>
   );
@@ -46,7 +50,7 @@ const Navbar = ({ title }, props) => {
         <div className="nav-wrapper">
           <div className="container">
             <Link to="/" className="brand-logo">
-              {title}
+              <b>{title}</b>
             </Link>
             <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
@@ -59,7 +63,9 @@ const Navbar = ({ title }, props) => {
       </nav>
 
       <ul className="sidenav" id="mobile-demo">
-        <h5 className="blue-text center">Todo Keeper</h5>
+        <h5 className="blue-text center">
+          <b>{title}</b>
+        </h5>
         <hr />
         {isAuthenticated ? authLinks : guestLinks}
       </ul>

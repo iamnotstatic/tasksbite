@@ -1,5 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import TodoContext from '../../../context/todo/todoContext';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const ViewTodoModal = () => {
   const todoContext = useContext(TodoContext);
@@ -20,7 +22,8 @@ const ViewTodoModal = () => {
               )}
             </h6>
             <h6>
-              <b>Created Date:</b> {todo.createdAt}
+              <b>Created Date:</b>{' '}
+              <Moment format="MMMM Do YYYY, h:mm:ss a">{todo.createdAt}</Moment>
             </h6>
           </Fragment>
         )}
