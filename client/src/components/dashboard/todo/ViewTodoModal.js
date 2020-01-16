@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import TodoContext from '../../../context/todo/todoContext';
 import Moment from 'react-moment';
 import 'moment-timezone';

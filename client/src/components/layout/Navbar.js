@@ -14,12 +14,12 @@ const Navbar = ({ title }, props) => {
 
   const authLinks = (
     <Fragment>
-      <li>
+      <li className="nav-close">
         <Link to="#!" style={{ textTransform: 'uppercase' }}>
           <i className="material-icons left">face</i> <b>{user && user.name}</b>
         </Link>
       </li>
-      <li>
+      <li className="nav-close">
         <Link to="#!" onClick={onLogout} style={{ textTransform: 'uppercase' }}>
           <i className="material-icons left">input</i>
           <b>
@@ -32,15 +32,15 @@ const Navbar = ({ title }, props) => {
 
   const guestLinks = (
     <Fragment>
-      <li>
-        <Link to="/register">
+      <li className="nav-close">
+        <a href="/register">
           <b> Register</b>
-        </Link>
+        </a>
       </li>
-      <li>
-        <Link to="/login">
+      <li className="nav-close">
+        <a href="/login">
           <b>Login</b>
-        </Link>
+        </a>
       </li>
     </Fragment>
   );

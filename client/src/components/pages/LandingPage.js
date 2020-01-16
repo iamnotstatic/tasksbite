@@ -71,8 +71,8 @@ const LandingPage = props => {
         </div>
       </section>
 
-      <div className="section-footer blue accent-2 center white-text">
-        <p>&copy; 2020</p>
+      <div className="section-footer blue center white-text">
+        <p>&copy; {new Date().getFullYear()}</p>
       </div>
     </Fragment>
   );

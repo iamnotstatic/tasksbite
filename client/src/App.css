@@ -11,7 +11,11 @@
 }
 
 .section-footer {
-  padding: 20px;
+  padding: 10px;
+}
+
+.section-footer p {
+  font-size: 20px;
 }
 
 tr td {
