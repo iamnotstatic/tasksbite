@@ -97,7 +97,7 @@ const TodoItem = () => {
         <Spinner />
       )}
 
-      <div className="card-action">
+      {/* <div className="card-action">
         <ul className="pagination">
           <li className="disabled">
             <a href="#!" className="blue-text">
@@ -130,7 +130,7 @@ const TodoItem = () => {
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </Fragment>
   );
 };

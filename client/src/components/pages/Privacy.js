@@ -18,9 +18,11 @@ const Privacy = () => {
       <div className="section section-privacy">
         <div className="container">
           <div className="card-panel">
-            <h3>Tasksbite Privacy Policy</h3>
+            <h4>Tasksbite Privacy Policy</h4>
             <br />
-            <h4>Information gathering and usage</h4>
+            <h5>
+              <b>Information gathering and usage</b>{' '}
+            </h5>
             <p className="flow-text">
               When registering for Tasksbite we ask for information such as your
               name and email address. Your information is only used internally

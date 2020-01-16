@@ -18,9 +18,11 @@ const Terms = () => {
       <div className="section section-terms">
         <div className="container">
           <div className="card-panel">
-            <h3>Tasksbite Terms of Service</h3>
+            <h4>Tasksbite Terms of Service</h4>
             <br />
-            <h4>Thanks for Choosing Tasksbite!</h4>
+            <h5>
+              <b>Thanks for Choosing Tasksbite!</b>{' '}
+            </h5>
             <p className="flow-text">
               Thanks for choosing Tasksbite! Tasksbite Service is provided by
               Tasksbite. By using our Service, you are agreeing to these Terms
