@@ -17,6 +17,34 @@ const Todos = () => {
     return <Spinner />;
   }
 
+  // Get Value of completed todos
+  const completed = arr => {
+    if (arr) {
+      let completedValue = [];
+      arr.forEach(todo => {
+        if (todo.completed) {
+          completedValue.push(todo);
+        }
+      });
+
+      return completedValue.length;
+    }
+  };
+
+  // Get Value of uncompleted todos
+  const unCompleted = arr => {
+    if (arr) {
+      let unCompletedValue = [];
+      arr.forEach(todo => {
+        if (!todo.completed) {
+          unCompletedValue.push(todo);
+        }
+      });
+
+      return unCompletedValue.length;
+    }
+  };
+
   return (
     <Fragment>
       <AddBtn />
@@ -32,14 +60,14 @@ const Todos = () => {
           <div className="card-panel green lighten-1 white-text center">
             <i className="material-icons medium">check_circle</i>
             <h5>Completed</h5>
-            <h3 className="count">28300</h3>
+            <h3 className="count">{completed(todos)}</h3>
           </div>
         </div>
         <div className="col s12 m6 l4">
           <div className="card-panel red lighten-1 white-text center">
             <i className="material-icons medium">close</i>
             <h5>Pending</h5>
-            <h3 className="count">28300</h3>
+            <h3 className="count">{unCompleted(todos)}</h3>
           </div>
         </div>
       </div>
