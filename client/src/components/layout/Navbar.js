@@ -20,12 +20,16 @@ const Navbar = ({ title }, props) => {
         </Link>
       </li>
       <li className="nav-close">
-        <Link to="#!" onClick={onLogout} style={{ textTransform: 'uppercase' }}>
+        <a
+          href="/login"
+          onClick={onLogout}
+          style={{ textTransform: 'uppercase' }}
+        >
           <i className="material-icons left">input</i>
           <b>
             <span className="hide-sm">Logout</span>
           </b>
-        </Link>
+        </a>
       </li>
     </Fragment>
   );

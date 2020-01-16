@@ -124,16 +124,6 @@ const TodoItem = () => {
               4
             </a>
           </li>
-          <li className="waves-effect">
-            <a href="#!" className="blue-text">
-              5
-            </a>
-          </li>
-          <li className="waves-effect">
-            <a href="#!" className="blue-text">
-              <i className="material-icons">chevron_right</i>
-            </a>
-          </li>
         </ul>
       </div>
     </Fragment>

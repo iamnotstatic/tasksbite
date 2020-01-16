@@ -5,11 +5,12 @@ import M from 'materialize-css/dist/js/materialize.min';
 
 const AddTodoModal = () => {
   const [todo, setTodo] = useState({
-    description: ''
+    description: '',
+    completed: false
   });
   const todoContext = useContext(TodoContext);
   const { addTodo } = todoContext;
-  const { description } = todo;
+  const { description, completed } = todo;
 
   const onChange = e => setTodo({ ...todo, [e.target.name]: e.target.value });
 
@@ -43,6 +44,21 @@ const AddTodoModal = () => {
                   value={description}
                   onChange={onChange}
                 ></textarea>
+              </div>
+              <div className="input-field col s12">
+                <p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name=""
+                      className="filled-in"
+                      checked={completed}
+                      value={completed}
+                      onChange={e => setTodo(!completed)}
+                    />
+                    <span>Completed</span>
+                  </label>
+                </p>
               </div>
             </div>
             <div className="card-action right-align center text-white">
