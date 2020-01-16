@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
+import Footer from './Footer';
 
 const LandingPage = props => {
   const authContext = useContext(AuthContext);
@@ -57,10 +58,7 @@ const LandingPage = props => {
           </div>
         </div>
       </section>
-
-      <div className="section-footer blue center white-text">
-        <p>&copy; {new Date().getFullYear()}</p>
-      </div>
+      <Footer />
     </Fragment>
   );
 };

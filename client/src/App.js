@@ -12,6 +12,8 @@ import Dashboard from './components/dashboard/Home';
 import Profile from './components/dashboard/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
+import Privacy from './components/pages/Privacy';
+import Terms from './components/pages/Terms';
 import NotFound from './components/pages/NotFound';
 
 import M from 'materialize-css/dist/js/materialize.min';
@@ -44,6 +46,8 @@ const App = () => {
               <Route exact path="/" component={LandingPage} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/terms" component={Terms} />
+              <Route exact path="/privacy" component={Privacy} />
               <Route component={NotFound} />
             </Switch>
           </div>

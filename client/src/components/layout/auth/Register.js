@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useContext } from 'react';
 import AuthContext from '../../../context/auth/authContext';
 import Spinner from '../Spinner';
+import Footer from '../../pages/Footer';
 
 import M from 'materialize-css/dist/js/materialize.min';
 
@@ -126,6 +127,7 @@ const Register = props => {
           </form>
         </div>
       </div>
+      <Footer />
     </Fragment>
   );
 };

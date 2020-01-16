@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react';
 import AuthContext from '../../../context/auth/authContext';
 import Spinner from '../Spinner';
+import Footer from '../../pages/Footer';
 
 import M from 'materialize-css/dist/js/materialize.min';
 
@@ -93,6 +94,7 @@ const Login = props => {
           </form>
         </div>
       </div>
+      <Footer />
     </Fragment>
   );
 };
