@@ -6,9 +6,6 @@ const Footer = () => {
     <div className="section-footer blue center white-text">
       <div className="row">
         <div className="col s12 m6">
-          <p>Copyright &copy; {new Date().getFullYear()}</p>
-        </div>
-        <div className="col s12 m6">
           <ul>
             <li>
               <Link to="/privacy" className="white-text">
@@ -21,6 +18,9 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
+        </div>
+        <div className="col s12 m6">
+          <p>Copyright &copy; {new Date().getFullYear()}</p>
         </div>
       </div>
     </div>
