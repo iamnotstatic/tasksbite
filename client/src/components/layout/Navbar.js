@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import PropTypes from 'prop-types';
+import titleImg from './logo-text.png';
 
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
@@ -54,7 +54,7 @@ const Navbar = ({ title }, props) => {
         <div className="nav-wrapper">
           <div className="container">
             <Link to="/" className="brand-logo">
-              <b>{title}</b>
+              <img src={titleImg} width="180px" alt="title" />
             </Link>
             <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
               <i className="material-icons">menu</i>
@@ -77,11 +77,4 @@ const Navbar = ({ title }, props) => {
   );
 };
 
-Navbar.protoTypes = {
-  title: PropTypes.string.isRequired
-};
-
-Navbar.defaultProps = {
-  title: 'Tasksbite'
-};
 export default Navbar;
