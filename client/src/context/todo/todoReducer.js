@@ -6,9 +6,9 @@ import {
   CLEAR_CURRENT,
   DELETE_TODO,
   UPDATE_TODO,
-  CLEAR_TODOS,
-  FILTER_TODO,
-  CLEAR_FILTER,
+  // CLEAR_TODOS,
+  // FILTER_TODO,
+  // CLEAR_FILTER,
   TODO_ERROR
 } from '../types';
 
