@@ -12,12 +12,12 @@ const Profile = () => {
     password: ''
   });
 
-  const [upload, avatarUpload] = useState({ file: null });
+  // const [upload, avatarUpload] = useState({ file: null });
 
   const authContext = useContext(AuthContext);
-  const { loadUser, loading, user, updateProfile, uplaodAvatar } = authContext;
+  const { loadUser, loading, user, updateProfile } = authContext;
   const { name, email, password } = profile;
-  const { file } = upload;
+  // const { file } = upload;
 
   useEffect(() => {
     loadUser();
@@ -54,14 +54,14 @@ const Profile = () => {
     }
   };
 
-  const onSubmitFile = e => {
-    e.preventDefault();
-    uplaodAvatar(file);
-  };
+  // const onSubmitFile = e => {
+  //   e.preventDefault();
+  //   uplaodAvatar(file);
+  // };
 
-  const onChangeFile = e => {
-    avatarUpload({ file: e.target.files[0] });
-  };
+  // const onChangeFile = e => {
+  //   avatarUpload({ file: e.target.files[0] });
+  // };
 
   if (loading) {
     return <Spinner />;
