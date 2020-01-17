@@ -53,7 +53,7 @@ const Navbar = ({ title }, props) => {
       <nav className="blue z-depth-0">
         <div className="nav-wrapper">
           <div className="container">
-            <Link to="/" className="brand-logo">
+            <Link to="/" className="brand-logo" style={{ marginTop: '8px' }}>
               <img src={titleImg} width="180px" alt="title" />
             </Link>
             <Link to="#" data-target="mobile-demo" className="sidenav-trigger">
