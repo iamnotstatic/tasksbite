@@ -134,11 +134,5 @@ const TodoItem = () => {
     </Fragment>
   );
 };
-// const truncate = {
-//   whiteSpace: 'nowrap',
-//   textOverflow: 'ellipsis',
-//   overflow: 'hidden',
-//   maxWidth: '3px'
-// };
 
 export default TodoItem;
