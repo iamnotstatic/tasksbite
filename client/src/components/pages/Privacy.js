@@ -35,6 +35,8 @@ const Privacy = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
 
       <Footer />
     </Fragment>

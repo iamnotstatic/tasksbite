@@ -36,6 +36,8 @@ const Terms = () => {
           </div>
         </div>
       </div>
+      <br />
+
       <Footer />
     </Fragment>
   );
