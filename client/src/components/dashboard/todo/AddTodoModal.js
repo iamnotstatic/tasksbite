@@ -13,7 +13,9 @@ const AddTodoModal = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (description === '') {
-      M.toast({ html: '<span class="red-text">All field are required</span>' });
+      M.toast({
+        html: '<span class="red-text">Description cannot be empty</span>'
+      });
     } else {
       addTodo({
         description,
