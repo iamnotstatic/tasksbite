@@ -3,12 +3,11 @@ const app = require('./app');
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
-  app.use(express.static('client/build'));
+  const publicDir = path.join(__dirname, '../client/build/index.html');
+  app.use(express.static(publicDir));
 
   app.get('*', (req, res) => {
-    req.sendFile(
-      path.resolve(__dirname, 'src', 'client', 'build', 'index.html')
-    );
+    req.sendFile(path.resolve(publicDir));
   });
 }
 
