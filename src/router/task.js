@@ -1,6 +1,7 @@
 const express = require('express');
 const Task = require('../models/task');
 const auth = require('../middleware/auth');
+const { sendTaskPendingEmail } = require('../emails/mailer');
 const router = express.Router();
 
 router.post('/api/tasks', auth, async (req, res) => {
@@ -28,6 +29,7 @@ router.get('/api/tasks', auth, async (req, res) => {
     sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
   }
   try {
+
     await req.user
       .populate({
         path: 'tasks',
@@ -39,7 +41,16 @@ router.get('/api/tasks', auth, async (req, res) => {
         }
       })
       .execPopulate();
+
+    const pending = await Task.find({ completed: false });
+    if (pending.length > 0) {
+      sendTaskPendingEmail(req.user.email, req.user.name).catch(error => {
+        res.status(500).send({ error: error.message });
+      });
+    }
+
     res.send(req.user.tasks);
+
   } catch (error) {
     res.status(500).send();
   }

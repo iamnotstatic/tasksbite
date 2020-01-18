@@ -40,7 +40,37 @@ const sendCancelationEmail = async (email, name) => {
   });
 };
 
+const sendTaskPendingEmail = async (email, name) => {
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'stmp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD
+    }
+  });
+
+  let info = await transporter.sendMail({
+    from: process.env.EMAIL_USERNAME,
+    to: email,
+    subject: 'Pending task(s)',
+    html: `
+      <div style="text-align:center; width: 250px; background: #f2f2f2; padding: 10px">
+      <h2>Tasksbite</h2>
+      <hr>
+      Hello ${name},
+      <br>
+    <p>You have a pending task(s)</p>
+    <br>
+    <p>Thanks, <br> Team.</p>
+    </div>`
+  });
+};
+
 module.exports = {
   sendWelcomeEmail,
-  sendCancelationEmail
+  sendCancelationEmail,
+  sendTaskPendingEmail
 };
