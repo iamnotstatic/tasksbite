@@ -2,10 +2,10 @@
   "name": "task-manager",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/index.js",
-    "server": "env-cmd ./config/dev.env nodemon src/index.js",
+    "start": "node server.js",
+    "server": "env-cmd ./config/dev.env nodemon serverjs",
     "test": "env-cmd ./config/test.env jest --watch --runInBand",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
