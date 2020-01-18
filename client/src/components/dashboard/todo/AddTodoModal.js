@@ -13,7 +13,7 @@ const AddTodoModal = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (description === '') {
-      M.toast({
+      return M.toast({
         html: '<span class="red-text">Description cannot be empty</span>'
       });
     } else {
@@ -24,7 +24,7 @@ const AddTodoModal = () => {
     }
     setDescription('');
     setCompleted(false);
-    M.toast({ html: '<span class="green-text">Tasks added</span>' });
+    return M.toast({ html: '<span class="green-text">Task added</span>' });
   };
 
   return (

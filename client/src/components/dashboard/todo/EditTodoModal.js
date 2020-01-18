@@ -20,7 +20,7 @@ const EditTodoModal = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (description === '') {
-      M.toast({
+      return M.toast({
         html: '<span class="red-text">Description cannot be empty</span>'
       });
     } else {
@@ -34,12 +34,9 @@ const EditTodoModal = () => {
       };
       updateTodo(updTodo, id);
 
-      M.toast({
+      return M.toast({
         html: "<span class='green-text'>Task updated successfully</span>"
       });
-
-      // Clear Fields
-      setCompleted(false);
     }
   };
 
