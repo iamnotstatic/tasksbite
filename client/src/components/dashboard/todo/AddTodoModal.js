@@ -65,7 +65,7 @@ const AddTodoModal = () => {
                 className="btn blue waves-effect waves-light"
                 type="submit"
               >
-                Submit <i className="material-icons right">send</i>
+                Add task <i className="material-icons right">send</i>
               </button>
             </div>
           </div>

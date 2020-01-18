@@ -24,13 +24,13 @@ const Home = () => {
           <div className="col m3 s12">
             <div className="card blue-grey white-text">
               <div className="center" style={{ transform: 'translateX(0px)' }}>
-                <img
+                {/* <img
                   src={`api/users/${user._id}/avatar`}
                   alt=""
                   width="150px"
                   className="circle responsive-img"
                   style={{ marginTop: '15px' }}
-                />
+                /> */}
                 <h5>{user.name}</h5>
                 <p>{user.email}</p>
               </div>

@@ -81,7 +81,7 @@ const EditTodoModal = () => {
                 className="btn blue waves-effect waves-light"
                 type="submit"
               >
-                Updated <i className="material-icons right">send</i>
+                Update <i className="material-icons right">send</i>
               </button>
             </div>
           </div>
