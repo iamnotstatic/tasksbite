@@ -22,13 +22,13 @@ const AddTodoModal = () => {
     }
     setDescription('');
     setCompleted(false);
-    M.toast({ html: '<span class="green-text">Todo added</span>' });
+    M.toast({ html: '<span class="green-text">Tasks added</span>' });
   };
 
   return (
     <div id="add-todo-modal" className="modal">
       <div className="modal-content">
-        <h4 className="center">Add a Todo</h4>
+        <h4 className="center">Add a Task</h4>
         <form onSubmit={onSubmit}>
           <div className="card-content">
             <div className="row">
@@ -37,6 +37,7 @@ const AddTodoModal = () => {
                 <textarea
                   name="description"
                   className="materialize-textarea"
+                  required
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>

@@ -35,7 +35,7 @@ const EditTodoModal = () => {
       updateTodo(updTodo, id);
 
       M.toast({
-        html: "<span class='green-text'>Todo updated successfully</span>"
+        html: "<span class='green-text'>Task updated successfully</span>"
       });
 
       // Clear Fields
@@ -46,7 +46,7 @@ const EditTodoModal = () => {
   return (
     <div id="edit-todo-modal" className="modal">
       <div className="modal-content">
-        <h4 className="center">Edit a Todo</h4>
+        <h4 className="center">Edit a Task</h4>
         <form onSubmit={onSubmit}>
           <div className="card-content">
             <div className="row">
@@ -55,6 +55,7 @@ const EditTodoModal = () => {
                   name="description"
                   className="materialize-textarea"
                   placeholder="Description"
+                  required
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 ></textarea>
