@@ -3,6 +3,8 @@ const app = require('./app');
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
+
+  // Join file
   const publicDir = path.join(__dirname, '../client/build/index.html');
   app.use(express.static(publicDir));
 
