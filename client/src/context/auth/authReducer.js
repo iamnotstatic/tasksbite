@@ -21,7 +21,8 @@ export default (state, action) => {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: action.payload
+        user: action.payload,
+        error: null
       };
     case REGISTER_SUCCESS:
       localStorage.setItem('token', action.payload.token);
@@ -29,7 +30,8 @@ export default (state, action) => {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        error: null
       };
 
     case LOGIN_SUCCESS:
@@ -38,7 +40,8 @@ export default (state, action) => {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        error: false
       };
 
     case UPDATE_PROFILE:

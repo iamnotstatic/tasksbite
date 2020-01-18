@@ -120,8 +120,13 @@ const AuthState = props => {
 
   // Upload Avatar
   const uplaodAvatar = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    };
     try {
-      await axios.post('/api/users/me/avatar', formData);
+      await axios.post('/api/users/me/avatar', formData, config);
       dispatch({
         type: UPLOAD_AVATAR
       });

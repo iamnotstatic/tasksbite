@@ -11,13 +11,18 @@ const Profile = () => {
     email: '',
     password: ''
   });
-
-  // const [upload, avatarUpload] = useState({ file: null });
+  const [file, setFile] = useState('');
 
   const authContext = useContext(AuthContext);
-  const { loadUser, loading, user, updateProfile } = authContext;
+  const {
+    loadUser,
+    loading,
+    user,
+    error,
+    updateProfile,
+    uplaodAvatar
+  } = authContext;
   const { name, email, password } = profile;
-  // const { file } = upload;
 
   useEffect(() => {
     loadUser();
@@ -29,6 +34,10 @@ const Profile = () => {
 
   const onChange = e => {
     updateUser({ ...profile, [e.target.name]: e.target.value });
+  };
+
+  const onUpload = e => {
+    setFile(e.target.files[0]);
   };
 
   const onSubmit = e => {
@@ -48,20 +57,22 @@ const Profile = () => {
           password
         });
       }
+
+      if (file) {
+        const formData = new FormData();
+        formData.append('avatar', file);
+        uplaodAvatar(formData);
+      }
+
+      if (error) {
+        return M.toast({ html: `${error}` });
+      }
+
       M.toast({
         html: '<span class="green-text">Profile updated successfully</span>'
       });
     }
   };
-
-  // const onSubmitFile = e => {
-  //   e.preventDefault();
-  //   uplaodAvatar(file);
-  // };
-
-  // const onChangeFile = e => {
-  //   avatarUpload({ file: e.target.files[0] });
-  // };
 
   if (loading) {
     return <Spinner />;
@@ -75,28 +86,23 @@ const Profile = () => {
             <SideNav />
           </div>
           <div className="col card s12 m7">
-            {/* <form onSubmit={onSubmitFile}>
-              <input type="file" onChange={onChangeFile} />
-              <input type="submit" value="Upload" />
-            </form> */}
             <form onSubmit={onSubmit} encType="multipart/form-data">
               <div className="card-content">
                 <span className="card-title center">Profile</span>
                 <div className="row">
-                  {/* <div className="file-field input-field">
+                  <div className="file-field input-field">
                     <div className="btn blue">
                       <span>Upload Image</span>
-                      <input
-                        type="file"
-                        name="avatar"
-                        value={avatar}
-                        onChange={onChange}
-                      />
+                      <input type="file" onChange={onUpload} id="custonFile" />
                     </div>
                     <div className="file-path-wrapper">
-                      <input className="file-path validate" type="text" />
+                      <input
+                        className="file-path validate"
+                        type="text"
+                        placeholder="Choose file"
+                      />
                     </div>
-                  </div> */}
+                  </div>
                   <div className="input-field col s12">
                     <input
                       type="text"
