@@ -52,7 +52,7 @@ const Todos = () => {
         <div className="col s12 m6 l4">
           <div className="card-panel blue lighten-1 white-text center">
             <i className="material-icons medium">insert_emoticon</i>
-            <h5>Total Todos</h5>
+            <h5>Total Tasks</h5>
             <h3 className="count">{todos && todos.length}</h3>
           </div>
         </div>

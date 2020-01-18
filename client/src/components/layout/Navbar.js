@@ -68,7 +68,7 @@ const Navbar = ({ title }, props) => {
 
       <ul className="sidenav" id="mobile-demo">
         <h5 className="blue-text center">
-          <b>{title}</b>
+          <b>Tasksbite</b>
         </h5>
         <hr />
         {isAuthenticated ? authLinks : guestLinks}
