@@ -24,13 +24,24 @@ const Home = () => {
           <div className="col m3 s12">
             <div className="card blue-grey white-text">
               <div className="center" style={{ transform: 'translateX(0px)' }}>
-                <img
-                  src={`api/users/${user._id}/avatar`}
-                  alt=""
-                  width="150px"
-                  className="circle responsive-img"
-                  style={{ marginTop: '15px' }}
-                />
+                {user.avatar === null ? (
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGWfx4vUs5AeXRQ40sB6M6vqQMwndd3W9lsgaLDhf-hZ5DORdsVA&s"
+                    alt="profile"
+                    width="150px"
+                    className="circle responsive-img"
+                    style={{ marginTop: '15px' }}
+                  />
+                ) : (
+                  <img
+                    src={`api/users/${user._id}/avatar`}
+                    alt=""
+                    width="150px"
+                    className="circle responsive-img"
+                    style={{ marginTop: '15px' }}
+                  />
+                )}
+
                 <h5>{user.name}</h5>
                 <p>{user.email}</p>
               </div>

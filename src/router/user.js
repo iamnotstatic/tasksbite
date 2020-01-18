@@ -14,6 +14,7 @@ router.post('/api/users', async (req, res) => {
       return res.status(400).send('User already exits');
     }
     await user.save();
+
     sendWelcomeEmail(user.email, user.name).catch(error => {
       res.status(500).send(error.message);
     });
