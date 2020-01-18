@@ -7,7 +7,9 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(publicDir));
 
   app.get('*', (req, res) => {
-    req.sendFile(path.resolve(publicDir));
+    req.sendFile(
+      path.resolve(__dirname, 'src', 'client', 'build', 'index.html')
+    );
   });
 }
 
