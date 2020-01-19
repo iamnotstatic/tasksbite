@@ -62,7 +62,7 @@ const AddTodoModal = () => {
             </div>
             <div className="card-action right-align center text-white">
               <button
-                className="btn blue waves-effect waves-light close-modal"
+                className="modal-close btn blue waves-effect waves-light"
                 type="submit"
               >
                 Add task <i className="material-icons right">send</i>
