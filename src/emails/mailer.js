@@ -57,9 +57,9 @@ const sendTaskPendingEmail = async (email, name) => {
     to: email,
     subject: 'Pending task(s)',
     html: `
-      <div style="text-align:center; width: 250px; background: #f2f2f2; padding: 10px">
+      <div>
       <h2>Tasksbite</h2>
-      <hr>
+      <br>
       Hello ${name},
       <br>
     <p>You have a pending task(s)</p>
