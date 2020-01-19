@@ -1,7 +1,7 @@
 const express = require('express');
 const Task = require('../models/task');
-const auth = require('../middleware/auth');
 const { sendTaskPendingEmail } = require('../emails/mailer');
+const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/api/tasks', auth, async (req, res) => {
@@ -45,10 +45,9 @@ router.get('/api/tasks', auth, async (req, res) => {
     const pending = await Task.find({ completed: false });
     if (pending.length > 0) {
       sendTaskPendingEmail(req.user.email, req.user.name).catch(error => {
-        res.status(500).send({ error: error.message });
+        res.status(500).send(error.message);
       });
     }
-
     res.send(req.user.tasks);
 
   } catch (error) {
