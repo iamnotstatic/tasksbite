@@ -4,6 +4,10 @@
 
 #### Website: <a href="https://tasksbite.herokuapp.com/">Click</a>
 
+## Setup project
+### npm install - to install dependencies
+### create DB and connect to it from the project
+  
 ## How to contribute
 <p>1. Fork the project & clone locally. Follow the initial setup here.</p>
 <p>2. Create a branch, naming it either a feature or bug: git checkout -b feature/that-new-feature or bug/fixing-that-bug</p>
